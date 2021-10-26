@@ -6,29 +6,35 @@ from wordpress_xmlrpc import WordPressPost
 
 url = config.my_site
 client = Client(url, config.user, config.password)
-posting = client.call(posts.GetPosts())
-posting = str(posting).replace("<","")
-posting = str(posting).replace(">","")
-posting = str(posting).replace(" WordPressPost: ","")
-posting = str(posting).replace("b","")
-posting = str(posting).replace("'","")
-posting = str(posting).replace("[","")
-posting = str(posting).replace("]","")
-print(posting.split(","))
+# print(posting.split(","))
 
 def posting_draft(heading, content):
-    if heading not in posting:
+    posting = client.call(posts.GetPosts())
+    posting = str(posting).replace("<","")
+    posting = str(posting).replace(">","")
+    posting = str(posting).replace(" WordPressPost: ","")
+    posting = str(posting).replace("WordPressPost: ","")
+    posting = str(posting).replace("b","")
+    posting = str(posting).replace("'","")
+    posting = str(posting).replace("[","")
+    posting = str(posting).replace("]","")
+    posting = [i.split(" ",2)[2] for i in posting]
+    heading = heading.split(" ",2)[2]
+    print(posting, heading)
+    if heading == "Works related":
+        return "Summary post seprately"
+    elif heading in posting:
+        return "Already posted"
+    else:
+        print(heading)
         post = WordPressPost()
         post.title = heading
         post.content = content
         post.id = client.call(posts.NewPost(post))
-        # whoops, I forgot to publish it!
         post.post_status = 'draft'
         client.call(posts.EditPost(post.id, post))
         return post.id
-    else:
-        return "Already posted"
-
+        
 def uploadImage(img_path):
     data = {
             'name': img_path,

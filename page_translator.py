@@ -12,8 +12,7 @@ def page_translate(url):
     novelSoup = bs(novel.text, "html.parser")
     novel_content = novelSoup.find('div', id = 'content')
     novel_content = novel_content.get_text(strip=True, separator='\n')
-    heading = novelSoup.find('h1')
-    heading = heading.get_text(strip=True, separator='\n')
+
     # print(heading)
 
     text = '[unedited]' + '\n'
@@ -38,14 +37,13 @@ def page_translate(url):
 
     return text
 
-def header(url):
+def header_name(url):
     novel = requests.get(url)
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     heading = novelSoup.find('h1')
-    heading = heading.get_text(strip=True, separator='\n')
-    
+    heading = heading.get_text(strip=True, separator='\n')  
     header = ''
     for content in heading.split(" "):
         try:
@@ -54,8 +52,23 @@ def header(url):
                 header = translated
             else:
                 header = header + " " + translated
+            if header[-1] == ")":
+                
+                header = header.split(" ")[:-1]
+                heading = ''
+                for i in header:
+                    if heading == '':
+                        heading = i
+                    else:
+                        heading = heading + " " + i
+                header = heading
         except Exception as e:
             print(e)
+    header = header.replace("/"," ")
+    header = header.replace("\\"," ")
+    header = header.replace("\""," ")
+    header = header.replace("?","")
+    header = header.replace(":","")
     return header
 
 def page_saveandpublish(url, novel_name):
@@ -72,12 +85,14 @@ def page_saveandpublish(url, novel_name):
     for page in sorted(page_lst):
         url = config.translation_site + page
         try:
-            heading = header(url)
+            heading = header_name(url)
             if not os.path.exists(novel_name + "/" + heading + ".md"):
                 content = page_translate(config.translation_site + page)
-                with open(novel_name + "/" + heading + ".md", "w", encoding='utf-8') as text_file:
-                    text_file.write(content)
-                    text_file.close()
+                with open(novel_name + "/" + heading + ".md", "w", encoding='utf-8') as md_file:
+                    md_file.write(content)
+                    md_file.close()
+                    
+                # whoops, I forgot to publish it!
                 print("posted:" + posting_draft(heading, content))
             print("Done:" + heading)
         except Exception as e:

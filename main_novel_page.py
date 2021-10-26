@@ -5,13 +5,18 @@ from time import sleep
 import os
 from wordpress_post import uploadImage
 from page_translator import page_saveandpublish
-import config
+from config import url, novel_name
+from PIL import Image
+import PIL
+import os
+import glob
 
-url = config.url
-novel_name = config.novel_name
+if not os.path.exists(novel_name):
+    os.mkdir(novel_name)
 
 #save novel image
-if not os.path.exists(novel_name + "/" + novel_name.replace(" ", "_") + ".jpg"):
+filename = novel_name + "/" + novel_name.replace(" ", "_") + ".jpg"
+if not os.path.exists(filename):
     novel = requests.get(url)
     novel.raise_for_status()
     novel.encoding = "GBK"
@@ -19,8 +24,8 @@ if not os.path.exists(novel_name + "/" + novel_name.replace(" ", "_") + ".jpg"):
     novel_img = novelSoup.findAll('img')
     novel_img = novel_img[0]['src']
     img_data = requests.get(novel_img).content
-    with open(novel_name + "/" + novel_name.replace(" ", "_") + ".jpg", 'wb') as handler:
-        handler.write(img_data)
-    print(uploadImage(novel_name + "/" + novel_name.replace(" ", "_") + ".jpg"))
+    with open(filename, 'wb') as img:
+        img.write(img_data)
+        
 #save novel chapters
 page_saveandpublish(url, novel_name)
