@@ -49,6 +49,7 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
 
-    -name: RUN FOREVER
+    - name: RUN FOREVER
+      id: running
       run: |
         python main_novel_page.py
