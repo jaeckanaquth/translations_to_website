@@ -33,7 +33,7 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - uses: actions/run
+    - uses: actions/run@v1
     - name: Set Environments
       with:
         URL: ${{ secrets.URL }}
