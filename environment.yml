@@ -10,8 +10,4 @@ dependencies:
   - lxml
   - pillow
   - pandas
-  - python-wordpress-xmlrpc
-  - pip
-    - pause
-    - deep-translator
 prefix: C:\Users\jaeck\anaconda3\envs\novels
