@@ -34,18 +34,18 @@ jobs:
         pip install -r requirements.txt
     
     - name: Set Environments and RUN FOREVER
-      env:
-        URL: ${{secrets.URL}}
-        NOVEL_NAME: ${{secrets.NOVEL_NAME}}
-        NOVEL_LINK: ${{secrets.NOVEL_LINK}}
-        NU_USER: ${{secrets.NU_USER}}
-        NU_PASSWORD: ${{secrets.NU_PASSWORD}}
-        TRANSLATOR: ${{secrets.TRANSLATOR}}
-        TRANSLATION_SITE: ${{secrets.TRANSLATION_SITE}}
-        SPECIAL: ${{secrets.SPECIAL}}
-        TAGS: ${{secrets.TAGS}}
-        MY_SITE: ${{secrets.MY_SITE}}
-        WP_USER: ${{secrets.WP_USER}}
-        WP_PASSWORD: ${{secrets.WP_PASSWORD}}
+      with:
+        URL: ${{ secrets.URL }}
+        NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
+        NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
+        NU_USER: ${{ secrets.NU_USER }}
+        NU_PASSWORD: ${{ secrets.NU_PASSWORD }}
+        TRANSLATOR: ${{ secrets.TRANSLATOR }}
+        TRANSLATION_SITE: ${{ secrets.TRANSLATION_SITE }}
+        SPECIAL: ${{ secrets.SPECIAL }}
+        TAGS: ${{ secrets.TAGS }}
+        MY_SITE: ${{ secrets.MY_SITE }}
+        WP_USER: ${{ secrets.WP_USER }}
+        WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
       run: |
         python main_novel_page.py
