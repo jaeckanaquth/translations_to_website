@@ -28,11 +28,12 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
     - name: Install dependencies 2
       run: |
         pip install -r requirements.txt
     
-    - name: Set Environments
+    - name: Set Environments and RUN FOREVER
       env: |
         URL: ${{secrets.URL}}
         NOVEL_NAME: ${{secrets.NOVEL_NAME}}
@@ -42,6 +43,5 @@ jobs:
         TRANSLATOR: ${{secrets.TRANSLATOR}}
         TRANSLATION_SITE: ${{secrets.TRANSLATION_SITE}}
         SPECIAL: ${{secrets.SPECIAL}}
-    - name: RUN FOREVER
-      env: |
+      run: |
         python main_novel_page.py
