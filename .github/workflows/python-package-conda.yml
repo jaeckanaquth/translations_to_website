@@ -34,6 +34,7 @@ jobs:
         pip install -r requirements.txt
     
     - name: Set Environments
+      uses: aws-actions/configure-add
       with:
         URL: ${{ secrets.URL }}
         NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
@@ -47,7 +48,7 @@ jobs:
         MY_SITE: ${{ secrets.MY_SITE }}
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
-        
+
     -name: RUN FOREVER
       run: |
         python main_novel_page.py
