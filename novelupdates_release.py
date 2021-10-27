@@ -1,10 +1,10 @@
-import os
 from selenium.webdriver.support.ui import Select
 from typing import NoReturn
 from selenium import webdriver
 import requests
 from bs4 import BeautifulSoup as bs
 from time import sleep
+from github_config import nu_username, nu_password, novel_name, translator
 
 
 def page_linktonu(release_link_url, header):
@@ -17,9 +17,9 @@ def page_linktonu(release_link_url, header):
     driver.get(login)
     # sleep(30)
     username = driver.find_element_by_id("user_login")
-    username.send_keys(os.getenv('NU_USER'))
+    username.send_keys(nu_username)
     password = driver.find_element_by_id("user_pass")
-    password.send_keys(os.getenv('NU_PASSWORD'))
+    password.send_keys(nu_password)
 
     driver.find_element_by_name("wp-submit").click()
 
@@ -28,7 +28,7 @@ def page_linktonu(release_link_url, header):
     try:
         group = driver.find_element_by_id("group_change_100").clear()
         group = driver.find_element_by_id("group_change_100")
-        group.send_keys(os.getenv('TRANSLATOR'))
+        group.send_keys(translator)
         sleep(30)
         group = driver.find_element_by_id("group_change_100")
         driver.find_element_by_class_name("change_list").click()
@@ -38,7 +38,7 @@ def page_linktonu(release_link_url, header):
 
         title = driver.find_element_by_id("title_change_100").clear()
         title = driver.find_element_by_id("title_change_100")
-        title.send_keys(os.getenv('NOVEL_NAME'))
+        title.send_keys(novel_name)
         sleep(30)
         title = driver.find_element_by_id("title_change_100")
         driver.find_element_by_class_name("change_list").click()

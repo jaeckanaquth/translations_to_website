@@ -1,4 +1,5 @@
 import requests
+import github_config as config
 import lxml, os
 from bs4 import BeautifulSoup as bs
 import pause
@@ -57,12 +58,12 @@ def header_name(url):
                 header = heading
         except Exception as e:
             print(e)
-    [header.replace(i, '') for i in os.getenv('SPECIAL')]
+    [header.replace(i, '') for i in config.special]
     return header
 
 
 def page_publishandlink(df):
-    novel = requests.get(os.getenv('URL'))
+    novel = requests.get(config.url)
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
@@ -72,7 +73,7 @@ def page_publishandlink(df):
         page_lst.append(dd.find('a')['href'])
     # print(page_lst)
     for page in sorted(page_lst):
-        url = os.getenv('TRANSLATION_SITE') + page
+        url = config.translation_site + page
         try:
             heading = header_name(url)
             print(heading)
@@ -82,9 +83,9 @@ def page_publishandlink(df):
                 content = page_translate(url)                    
                 # whoops, I forgot to publish it!
                 publish_id = posting(heading, content)
-                print(page_linktonu(os.getenv('NOVEL_LINK') + publish_id, heading))
+                print(page_linktonu(config.novel_link + publish_id, heading))
                 dct = {"name": heading, "post_id": publish_id,
-                       "link_id": url, "wp_link": os.getenv('NOVEL_LINK') + publish_id}
+                       "link_id": url, "wp_link": config.novel_link + publish_id}
                 df = df.append(dct, ignore_index=True)
                 print(df)
                 pause.days(7)

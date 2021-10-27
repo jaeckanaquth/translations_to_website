@@ -1,4 +1,5 @@
-import requests, os
+import github_config as config
+import requests
 from wordpress_xmlrpc import Client
 from wordpress_xmlrpc.methods import posts, media
 from wordpress_xmlrpc.compat import xmlrpc_client
@@ -7,15 +8,15 @@ from wordpress_xmlrpc import WordPressTerm
 from bs4 import BeautifulSoup as bs
 from wordpress_xmlrpc.methods import taxonomies
 
-url = os.getenv('URL')
-client = Client(url, os.getenv('WP_USER'), os.getenv('WP_PASSWORD'))
+url = config.my_site
+client = Client(url, config.user, config.password)
 # print(posting.split(","))
 
 def posting_test(heading, df):
     posting = client.call(posts.GetPosts())
     posting = [str(i) for i in posting]
     for j, p in enumerate(posting):
-        [p.replace(i, '') for i in os.getenv('SPECIAL_CHR')]
+        [p.replace(i, '') for i in config.special]
         posting[j] = p
     print(posting, heading)
     if heading == "Works related":
@@ -31,8 +32,8 @@ def posting(heading, content):
     post = WordPressPost()
     post.title = heading
     post.terms_names = {
-        'post_tag': os.getenv('WP_TAGS'),
-        'category': [os.getenv('NOVEL_NAMES')],
+        'post_tag': config.tags,
+        'category': [config.novel_name],
     }
     post.content = content
     post.id = client.call(posts.NewPost(post))
