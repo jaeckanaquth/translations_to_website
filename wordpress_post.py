@@ -1,4 +1,4 @@
-import config, requests
+import requests, os
 from wordpress_xmlrpc import Client
 from wordpress_xmlrpc.methods import posts, media
 from wordpress_xmlrpc.compat import xmlrpc_client
@@ -7,7 +7,7 @@ from wordpress_xmlrpc import WordPressTerm
 from bs4 import BeautifulSoup as bs
 from wordpress_xmlrpc.methods import taxonomies
 
-url = config.my_site
+url = os.getenv('URL')
 client = Client(url, config.user, config.password)
 # print(posting.split(","))
 
