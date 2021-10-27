@@ -9,7 +9,7 @@ translation_site = str(os.environ.get('TRANSLATION_SITE'))
 nu_username = str(os.environ.get('NU_USER'))
 nu_password = str(os.environ.get('NU_PASSWORD'))
 translator = str(os.environ.get('TRANSLATOR'))
-special = list(os.environ.get('SPECIAL'))
-tags = list(os.environ.get('TAGS'))
+special = ['[', ']', '\\', '\'', '!', '@', '#', '$', '%', '^', '&', '*','{', '}', '"', ':', ';', ',', '<', '>', '.', '?', '<WordPressPost: b\'', 'WordPressPost: ', '\'>']
+tags = [os.environ.get('TAGS')]
 novel_link = str(os.environ.get('NOVEL_LINK')) + \
     novel_name.lower().replace(" ", '-') + '/'
