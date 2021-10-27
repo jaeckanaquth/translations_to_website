@@ -83,7 +83,7 @@ def page_publishandlink(df):
                 content = page_translate(url)                    
                 # whoops, I forgot to publish it!
                 publish_id = posting(heading, content)
-                print(page_linktonu(config.novel_link + publish_id, heading))
+                # print(page_linktonu(config.novel_link + publish_id, heading))
                 dct = {"name": heading, "post_id": publish_id,
                        "link_id": url, "wp_link": config.novel_link + publish_id}
                 df = df.append(dct, ignore_index=True)
