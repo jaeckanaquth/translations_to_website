@@ -34,7 +34,7 @@ jobs:
         pip install -r requirements.txt
     
     - name: Set Environments
-      uses: aws-actions/configure-add
+      uses: actions/configure-add
       with:
         URL: ${{ secrets.URL }}
         NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
