@@ -1,15 +1,15 @@
 import os
 
-password = str(os.environ['WP_PASSWORD'])
-user = str(os.environ['WP_USER'])
-url = str(os.environ['URL'])
-novel_name = str(os.environ['NOVEL_NAME'])
-my_site = str(os.environ['MY_SITE'])
-translation_site = str(os.environ['TRANSLATION_SITE'])
-nu_username = str(os.environ['NU_USER'])
-nu_password = str(os.environ['NU_PASSWORD'])
-translator = str(os.environ['TRANSLATOR'])
-special = list(os.environ['SPECIAL'])
-tags = list(os.environ['TAGS'])
-novel_link = str(os.environ['NOVEL_LINK']) + \
+password = str(os.getenv['WP_PASSWORD'])
+user = str(os.getenv['WP_USER'])
+url = str(os.getenv['URL'])
+novel_name = str(os.getenv['NOVEL_NAME'])
+my_site = str(os.getenv['MY_SITE'])
+translation_site = str(os.getenv['TRANSLATION_SITE'])
+nu_username = str(os.getenv['NU_USER'])
+nu_password = str(os.getenv['NU_PASSWORD'])
+translator = str(os.getenv['TRANSLATOR'])
+special = list(os.getenv['SPECIAL'])
+tags = list(os.getenv['TAGS'])
+novel_link = str(os.getenv['NOVEL_LINK']) + \
     novel_name.lower().replace(" ", '-') + '/'
