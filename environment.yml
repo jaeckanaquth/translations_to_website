@@ -9,5 +9,4 @@ dependencies:
   - selenium
   - lxml
   - pillow
-  - pandas
 prefix: C:\Users\jaeck\anaconda3\envs\novels
