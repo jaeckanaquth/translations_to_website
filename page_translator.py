@@ -1,9 +1,10 @@
 import requests, config
 import lxml, os
 from bs4 import BeautifulSoup as bs
-from time import sleep
+import pause
 from deep_translator import GoogleTranslator
-from wordpress_post import posting_draft
+from novelupdates_release import page_linktonu
+from wordpress_post import posting, posting_test
 
 def page_translate(url):
     novel = requests.get(url)
@@ -13,15 +14,10 @@ def page_translate(url):
     novel_content = novelSoup.find('div', id = 'content')
     novel_content = novel_content.get_text(strip=True, separator='\n')
 
-    # print(heading)
-
     text = '[unedited]' + '\n'
     for content in novel_content.split("\n"):
-        # content = content.replace("*******", "-------进而---------")
         try:
-            # sleep(10)
             translated = GoogleTranslator(source='auto', target='en').translate(content)
-            # print(translated)
             text = text + '\n' + translated
         except Exception as e:
             e = str(e)
@@ -32,9 +28,6 @@ def page_translate(url):
             else:
                 print(e)
                 pass
-
-
-
     return text
 
 def header_name(url):
@@ -64,17 +57,12 @@ def header_name(url):
                 header = heading
         except Exception as e:
             print(e)
-    header = header.replace("/"," ")
-    header = header.replace("\\"," ")
-    header = header.replace("\""," ")
-    header = header.replace("?","")
-    header = header.replace(":","")
+    [header.replace(i, '') for i in config.special]
     return header
 
-def page_saveandpublish(url, novel_name):
-    if not os.path.exists(novel_name):
-            os.makedirs(novel_name)
-    novel = requests.get(url)
+
+def page_publishandlink(df):
+    novel = requests.get(config.url)
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
@@ -82,19 +70,25 @@ def page_saveandpublish(url, novel_name):
     novel_link = novelSoup.findAll('dd')
     for dd in novel_link:
         page_lst.append(dd.find('a')['href'])
+    # print(page_lst)
     for page in sorted(page_lst):
         url = config.translation_site + page
         try:
             heading = header_name(url)
-            if not os.path.exists(novel_name + "/" + heading + ".md"):
-                content = page_translate(config.translation_site + page)
-                with open(novel_name + "/" + heading + ".md", "w", encoding='utf-8') as md_file:
-                    md_file.write(content)
-                    md_file.close()
-                    
+            print(heading)
+            test = posting_test(heading, df)
+            print(test)
+            if test == "Need to be posted":
+                content = page_translate(url)                    
                 # whoops, I forgot to publish it!
-                print("posted:" + posting_draft(heading, content))
-            print("Done:" + heading)
+                publish_id = posting(heading, content)
+                print(page_linktonu(config.novel_link + publish_id, heading))
+                dct = {"name": heading, "post_id": publish_id,
+                       "link_id": url, "wp_link": config.novel_link + publish_id}
+                df = df.append(dct, ignore_index=True)
+                print(df)
+                pause.days(7)
         except Exception as e:
-            print(e)
-            sleep(100)
+            print("Error in Publishing: " + str(e))
+            pause.minutes(1)
+    return df
