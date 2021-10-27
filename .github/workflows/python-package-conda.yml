@@ -33,9 +33,8 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - uses: actions/run@v1
     - name: Set Environments
-      with:
+      env:
         URL: ${{ secrets.URL }}
         NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
@@ -48,7 +47,7 @@ jobs:
         MY_SITE: ${{ secrets.MY_SITE }}
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
-    
+      run: echo env.NOVEL_NAME
     - name: RUN
       run: |
         python main_novel_page.py
