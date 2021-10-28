@@ -48,3 +48,6 @@ jobs:
         echo $URL >> secrets.txt
         echo $NOVEL_NAME >> secrets.txt
         cat secrets.txt
+    
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
