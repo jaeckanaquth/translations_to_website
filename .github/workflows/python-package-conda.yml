@@ -36,7 +36,7 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-        - name: Set Environments
+    - name: Set Environments
       env:
         URL: ${{ secrets.URL }}
         NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
