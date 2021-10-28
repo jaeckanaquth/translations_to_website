@@ -70,8 +70,8 @@ def header_name(url):
 
 
 def page_publishandlink(df):
-    novel = requests.get(config.url)
-    novel.raise_for_status()
+    novel = requests.get(config.url, headers=user_agent)
+    # novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     page_lst = []
