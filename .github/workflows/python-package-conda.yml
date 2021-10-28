@@ -32,30 +32,30 @@ jobs:
 
     - name: Set Environments
       env:
-        URL:"$secrets.URL"
-        NOVEL_NAME:"$secrets.NOVEL_NAME"
-        NOVEL_LINK:"$secrets.NOVEL_LINK"
-        NU_USER:"$secrets.NU_USER"
-        NU_PASSWORD:"$secrets.NU_PASSWORD"
-        TRANSLATOR:"$secrets.TRANSLATOR"
-        TRANSLATION_SITE:"$secrets.TRANSLATION_SITE"
-        SPECIAL:"$secrets.SPECIAL"
-        TAGS:"$secrets.TAGS"
-        MY_SITE:"$secrets.MY_SITE"
-        WP_USER:"$secrets.WP_USER"
-        WP_PASSWORD:"$secrets.WP_PASSWORD"
+        URL: ${{ secrets.URL }}
+        NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
+        NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
+        NU_USER: ${{ secrets.NU_USER }}
+        NU_PASSWORD: ${{ secrets.NU_PASSWORD }}
+        TRANSLATOR: ${{ secrets.TRANSLATOR }}
+        TRANSLATION_SITE: ${{ secrets.TRANSLATION_SITE }}
+        SPECIAL: ${{ secrets.SPECIAL }}
+        TAGS: ${{ secrets.TAGS }}
+        MY_SITE: ${{ secrets.MY_SITE }}
+        WP_USER: ${{ secrets.WP_USER }}
+        WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
       run: |
         echo URL: "$secrets.URL"
-        echo NOVEL_NAME:"$secrets.NOVEL_NAME"
-        echo NOVEL_LINK:"$secrets.NOVEL_LINK"
-        echo NU_USER:"$secrets.NU_USER"
-        echo NU_PASSWORD:"$secrets.NU_PASSWORD"
-        echo TRANSLATOR:"$secrets.TRANSLATOR"
-        echo TRANSLATION_SITE:"$secrets.TRANSLATION_SITE"
-        echo TAGS:"$secrets.TAGS"
-        MY_SITE:"$secrets.MY_SITE"
-        WP_USER:"$secrets.WP_USER"
-        WP_PASSWORD:"$secrets.WP_PASSWORD"
+        echo NOVEL_NAME: "$secrets.NOVEL_NAME"
+        echo NOVEL_LINK: "$secrets.NOVEL_LINK"
+        echo NU_USER: "$secrets.NU_USER"
+        echo NU_PASSWORD: "$secrets.NU_PASSWORD"
+        echo TRANSLATOR: "$secrets.TRANSLATOR"
+        echo TRANSLATION_SITE: "$secrets.TRANSLATION_SITE"
+        echo TAGS: "$secrets.TAGS"
+        echo MY_SITE: "$secrets.MY_SITE"
+        echo WP_USER: "$secrets.WP_USER"
+        echo WP_PASSWORD: "$secrets.WP_PASSWORD"
         python github_config.py
         python main_novel_page.py
         
