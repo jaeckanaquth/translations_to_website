@@ -1,29 +1,49 @@
-name: Workflows with large secrets
+name: Python Package using Conda
 
-on: push
+on: [push]
 
 jobs:
-  my-job:
-    name: My Job
+  build-linux:
     runs-on: ubuntu-latest
-    environment: Development
-    steps:
-      - uses: actions/checkout@v2
-      - name: Decrypt large secret
-        run: ./.github/secrets/decrypt_secret.sh
-        env:
-          URL: ${{ secrets.URL }}
-          NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
-          NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
-          NU_USER: ${{ secrets.NU_USER }}
-          NU_PASSWORD: ${{ secrets.NU_PASSWORD }}
-          TRANSLATOR: ${{ secrets.TRANSLATOR }}
-          TRANSLATION_SITE: ${{ secrets.TRANSLATION_SITE }}
-          SPECIAL: ${{ secrets.SPECIAL }}
-          TAGS: ${{ secrets.TAGS }}
-          MY_SITE: ${{ secrets.MY_SITE }}
-          WP_USER: ${{ secrets.WP_USER }}
-          WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+    environment : Development
+    strategy:
+      max-parallel: 5
 
-      - name: Test printing your secret (Remove this step in production)
-        run: cat $HOME/secrets/my_secret.json
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+
+    - name: Install dependencies
+      run: |
+        conda env update --file environment.yml --name novels
+
+    - name: Install dependencies 2
+      run: |
+        pip install -r requirements.txt
+
+    - name: Set Environments
+      env:
+        URL: ${{ secrets.URL }}
+        NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
+        NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
+        NU_USER: ${{ secrets.NU_USER }}
+        NU_PASSWORD: ${{ secrets.NU_PASSWORD }}
+        TRANSLATOR: ${{ secrets.TRANSLATOR }}
+        TRANSLATION_SITE: ${{ secrets.TRANSLATION_SITE }}
+        SPECIAL: ${{ secrets.SPECIAL }}
+        TAGS: ${{ secrets.TAGS }}
+        MY_SITE: ${{ secrets.MY_SITE }}
+        WP_USER: ${{ secrets.WP_USER }}
+        WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+      run: |
+        python github_config.py
+        python main_novel_page.py
+        
