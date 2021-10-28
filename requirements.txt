@@ -2,3 +2,4 @@ pause
 deep-translator
 python-wordpress-xmlrpc
 environs
+requests-toolbelt
