@@ -1,7 +1,7 @@
 import config
 import urllib.request
 
-url = 'https://stackoverflow.com/'
+url = 'https://www.shubaow.net/214_214809/'
 
 # Open the URL as Browser, not as python urllib
 page = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
