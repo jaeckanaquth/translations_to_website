@@ -45,17 +45,17 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
       run: |
-        echo URL: $URL
-        echo NOVEL_NAME: $NOVEL_NAME
-        echo NOVEL_LINK: $NOVEL_LINK
-        echo NU_USER: $NU_USER
-        echo NU_PASSWORD: $NU_PASSWORD
-        echo TRANSLATOR: $TRANSLATOR
-        echo TRANSLATION_SITE: $TRANSLATION_SITE
-        echo TAGS: $TAGS
-        echo MY_SITE: $MY_SITE
-        echo WP_USER: $WP_USER
-        echo WP_PASSWORD: $WP_PASSWORD
+        echo URL: $env.URL
+        echo NOVEL_NAME: $env.NOVEL_NAME
+        echo NOVEL_LINK: $env.NOVEL_LINK
+        echo NU_USER: $env.NU_USER
+        echo NU_PASSWORD: $env.NU_PASSWORD
+        echo TRANSLATOR: $env.TRANSLATOR
+        echo TRANSLATION_SITE: $env.TRANSLATION_SITE
+        echo TAGS: $env.TAGS
+        echo MY_SITE: $env.MY_SITE
+        echo WP_USER: $env.WP_USER
+        echo WP_PASSWORD: $env.WP_PASSWORD
         python github_config.py
         python main_novel_page.py
         
