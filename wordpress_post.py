@@ -8,8 +8,7 @@ from wordpress_xmlrpc import WordPressTerm
 from bs4 import BeautifulSoup as bs
 from wordpress_xmlrpc.methods import taxonomies
 
-url = config.my_site
-client = Client(url, config.user, config.password)
+client = Client(config.my_site, config.user, config.password)
 # print(posting.split(","))
 
 def posting_test(heading, df):
