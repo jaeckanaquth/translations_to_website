@@ -1,7 +1,10 @@
-import requests
+import requests, glob
 import pandas as pd
 from bs4 import BeautifulSoup as bs
-from github_config import url, novel_name, novel_link
+if glob.glob("config.py"):
+    from config import url, novel_name, novel_link
+else:
+    from github_config import url, novel_name, novel_link
 from page_translator import page_publishandlink
 from wordpress_post import uploadImage
 

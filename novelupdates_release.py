@@ -1,10 +1,13 @@
 from selenium.webdriver.support.ui import Select
 from typing import NoReturn
 from selenium import webdriver
-import requests
+import requests, glob
 from bs4 import BeautifulSoup as bs
 from time import sleep
-from github_config import nu_username, nu_password, novel_name, translator
+if glob.glob("config.py"):
+    from config import nu_username, nu_password, novel_name, translator
+else:
+    from github_config import nu_username, nu_password, novel_name, translator
 
 
 def page_linktonu(release_link_url, header):

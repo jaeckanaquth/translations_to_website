@@ -1,4 +1,8 @@
-import github_config as config
+import glob
+if glob.glob("config.py"):  
+    import config
+else:
+    import github_config as config
 import requests
 from wordpress_xmlrpc import Client
 from wordpress_xmlrpc.methods import posts, media

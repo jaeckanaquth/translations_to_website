@@ -1,5 +1,9 @@
+import glob
 import requests
-import github_config as config
+if glob.glob("config.py"):
+    import config
+else:
+    import github_config as config
 import lxml, os
 from bs4 import BeautifulSoup as bs
 import pause
