@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Decrypt large secret
-        run: ./.github/decrypt_secret.sh
+        run: ./.github/secrets/decrypt_secret.sh
         env:
           URL: ${{ secrets.URL }}
           NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
