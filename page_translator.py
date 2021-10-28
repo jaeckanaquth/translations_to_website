@@ -19,7 +19,7 @@ def page_translate(url):
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
-    novel_content = novelSoup.find('div', id = 'content')
+    novel_content = novelSoup.find('div', id='readcontent')
     novel_content = novel_content.get_text(strip=True, separator='\n')
 
     text = '[unedited]' + '\n'
