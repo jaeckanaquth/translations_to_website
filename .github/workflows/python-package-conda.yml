@@ -52,12 +52,8 @@ jobs:
         MY_SITE: ${{ secrets.MY_SITE }}
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
-
+    # This command is just an example to show your secret being printed
+    # Ensure you remove any print statements of your secrets. GitHub does
+    # not hide secrets that use this workaround.
     - name: Test printing your secret (Remove this step in production)
-        run: cat $HOME/secrets/my_secret.json
-
-    - name: RUN
-      run: |
-        python github_config.py
-        python main_novel_page.py
-        
+      run: cat $HOME/secrets/my_secret.json
