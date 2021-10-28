@@ -12,16 +12,10 @@ from novelupdates_release import page_linktonu
 from wordpress_post import posting, posting_test
 from requests.auth import HTTPBasicAuth
 
-user_agent = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-              'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-              'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-              'Accept-Encoding': 'none',
-              'Accept-Language': 'en-US,en;q=0.8',
-              'Connection': 'keep-alive'}
-session = requests.Session()
+user_agent = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
 def page_translate(url):
-    novel = session.get(url, headers=user_agent)
+    novel = requests.get(url, headers=user_agent)
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
@@ -45,7 +39,7 @@ def page_translate(url):
     return text
 
 def header_name(url):
-    novel = session.get(url, headers=user_agent)
+    novel = requests.get(url, headers=user_agent)
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
