@@ -15,6 +15,7 @@ user_agent = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) App
 def main_img():
     novel = requests.get(url, headers=user_agent)
     # novel.raise_for_status()
+    print(novel)
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     novel_img = novelSoup.findAll('img')
