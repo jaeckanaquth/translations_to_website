@@ -16,7 +16,7 @@ user_agent = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) App
 
 def page_translate(url):
     novel = requests.get(url, headers=user_agent)
-    novel.raise_for_status()
+    # novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     novel_content = novelSoup.find('div', id = 'content')
