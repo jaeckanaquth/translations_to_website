@@ -10,6 +10,7 @@ import pause
 from deep_translator import GoogleTranslator
 from novelupdates_release import page_linktonu
 from wordpress_post import posting, posting_test
+from requests.auth import HTTPBasicAuth
 
 def page_translate(url):
     novel = requests.get(url)
@@ -36,7 +37,8 @@ def page_translate(url):
     return text
 
 def header_name(url):
-    novel = requests.get(url)
+    user_agent = {'User-agent': 'Mozilla/5.0'}
+    novel = requests.get(url, headers=user_agent)
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
