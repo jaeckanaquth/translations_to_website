@@ -33,7 +33,11 @@ jobs:
         MY_SITE: ${{ secrets.MY_SITE }}
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
-      run: echo "$NOVEL_NAME"
+      run: |
+        export WP_USER = "$WP_USER"
+        export WP_PASSWORD = "$WP_PASSWORD"
+        export URL = "$URL"
+        python github-config.py
       
     - name: Install dependencies
       run: |
