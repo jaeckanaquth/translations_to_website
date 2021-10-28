@@ -12,8 +12,7 @@ from novelupdates_release import page_linktonu
 from wordpress_post import posting, posting_test
 from requests.auth import HTTPBasicAuth
 
-user_agent = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
+user_agent = {'user-agent': 'my-agent/1.0.1'}
 
 def page_translate(url):
     novel = requests.get(url, headers=user_agent)
