@@ -31,7 +31,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Set Environments
-      env:
+      with:
         URL: ${{ secrets.URL }}
         NOVEL_NAME: ${{ secrets.NOVEL_NAME }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
@@ -45,18 +45,6 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
       run: |
-        echo URL: ${{ secrets.URL }}  | sed 's/./& /g'
-        echo NOVEL_NAME: ${{ secrets.NOVEL_NAME }}  | sed 's/./& /g'
-        echo NOVEL_LINK: ${{ secrets.NOVEL_LINK }}  | sed 's/./& /g'
-        echo NU_USER: ${{ secrets.NU_USER }}  | sed 's/./& /g'
-        echo NU_PASSWORD: ${{ secrets.NU_PASSWORD }}  | sed 's/./& /g'
-        echo TRANSLATOR: ${{ secrets.TRANSLATOR }}  | sed 's/./& /g'
-        echo TRANSLATION_SITE: ${{ secrets.TRANSLATION_SITE }}  | sed 's/./& /g'
-        echo SPECIAL: ${{ secrets.SPECIAL }}  | sed 's/./& /g'
-        echo TAGS: ${{ secrets.TAGS }}  | sed 's/./& /g'
-        echo MY_SITE: ${{ secrets.MY_SITE }}  | sed 's/./& /g'
-        echo WP_USER: ${{ secrets.WP_USER }}  | sed 's/./& /g'
-        echo WP_PASSWORD: ${{ secrets.WP_PASSWORD }}  | sed 's/./& /g'
         python github_config.py
         python main_novel_page.py
         
