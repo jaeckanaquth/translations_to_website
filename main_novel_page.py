@@ -7,9 +7,13 @@ else:
     from github_config import url, novel_name, novel_link
 from page_translator import page_publishandlink
 from wordpress_post import uploadImage
+from requests.auth import HTTPBasicAuth
+
+user_agent = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+
 
 def main_img():
-    novel = requests.get(url)
+    novel = requests.get(url, headers=user_agent)
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
