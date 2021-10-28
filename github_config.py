@@ -12,4 +12,4 @@ translator = str(os.environ['TRANSLATOR'])
 special = ['[', ']', '\\', '\'', '!', '@', '#', '$', '%', '^', '&', '*','{', '}', '"', ':', ';', ',', '<', '>', '.', '?', '<WordPressPost: b\'', 'WordPressPost: ', '\'>']
 tags = ['IBHAJQT']
 name_edit = novel_name.lower().replace(" ", '-')
-novel_link = f"{my_site}{name_edit}/"
+novel_link = f"{os.environ['NOVEL_LINK']}{name_edit}/"
