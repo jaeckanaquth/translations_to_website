@@ -23,8 +23,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        conda env update --file environment.yml --name novels
-        activate novels
+        conda env update --file environment.yml --name vase
+        activate base
 
     - name: Install dependencies 2
       run: |
