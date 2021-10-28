@@ -16,7 +16,7 @@ user_agent = {'User-Agent': 'Mozilla/5.0'}
 
 def page_translate(url):
     novel = requests.get(url, headers=user_agent)
-    # novel.raise_for_status()
+    novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     novel_content = novelSoup.find('div', id = 'content')
@@ -40,7 +40,7 @@ def page_translate(url):
 
 def header_name(url):
     novel = requests.get(url, headers=user_agent)
-    # novel.raise_for_status()
+    novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     heading = novelSoup.find('h1')
@@ -71,7 +71,7 @@ def header_name(url):
 
 def page_publishandlink(df):
     novel = requests.get(config.url, headers=user_agent)
-    # novel.raise_for_status()
+    novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     page_lst = []
