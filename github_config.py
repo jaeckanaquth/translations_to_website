@@ -1,6 +1,6 @@
 import os
 
-password = str(os.environ['WP_PASSWORD'])
+password = '$WP_PASSWORD'
 user = str(os.environ['WP_USER'])
 url = f"{os.environ['URL']}"
 print(password, user, url)
