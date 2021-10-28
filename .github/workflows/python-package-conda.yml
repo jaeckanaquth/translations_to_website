@@ -39,7 +39,6 @@ jobs:
         NU_PASSWORD: ${{ secrets.NU_PASSWORD }}
         TRANSLATOR: ${{ secrets.TRANSLATOR }}
         TRANSLATION_SITE: ${{ secrets.TRANSLATION_SITE }}
-        SPECIAL: ${{ secrets.SPECIAL }}
         TAGS: ${{ secrets.TAGS }}
         MY_SITE: ${{ secrets.MY_SITE }}
         WP_USER: ${{ secrets.WP_USER }}
