@@ -14,9 +14,10 @@ user_agent = {
 
 
 def main_img():
-    novel = requests.get(url, headers=user_agent)
+    session = requests.Session()
+    novel = session.get(url, headers=user_agent)
     # novel.raise_for_status()
-    print(novel)
+    print(novel.status_code)
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
     novel_img = novelSoup.findAll('img')
