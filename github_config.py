@@ -1,9 +1,8 @@
 import os
 
-password = '$WP_PASSWORD'
+password = str(os.environ['WP_PASSWORD'])
 user = str(os.environ['WP_USER'])
 url = f"{os.environ['URL']}"
-print(password, user, url)
 novel_name = str(os.environ['NOVEL_NAME'])
 my_site = f"{os.environ['MY_SITE']}"
 translation_site = str(os.environ['TRANSLATION_SITE'])

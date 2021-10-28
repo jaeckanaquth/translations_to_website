@@ -14,9 +14,9 @@ def page_linktonu(release_link_url, header):
     url = "https://www.novelupdates.com/add-release/"
     login = "https://www.novelupdates.com/login/"
 
-    # myedge = "C:/Users/jaeck/Documents/personal_workspace/downloads/msedgedriver.exe"
+    myedge = "C:/Users/jaeck/Documents/personal_workspace/downloads/msedgedriver.exe"
 
-    driver = webdriver.Edge()
+    driver = webdriver.Edge(executable_path= myedge)
     driver.get(login)
     # sleep(30)
     username = driver.find_element_by_id("user_login")
@@ -52,6 +52,6 @@ def page_linktonu(release_link_url, header):
     except Exception as e:
         print("Error of NU:" + str(e))
 
-    # driver.find_element_by_name("submit").click()
+    driver.find_element_by_name("submit").click()
     driver.close()
     return 'done'
