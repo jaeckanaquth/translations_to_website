@@ -1,17 +1,12 @@
 import config
-import requests
-from requests_toolbelt.utils import dump
+import urllib.request
 
+url = 'https://stackoverflow.com/'
 
-def print_raw_http(response):
-    data = dump.dump_all(response, request_prefix=b'', response_prefix=b'')
-    print('\n' * 2 + data.decode('utf-8'))
+# Open the URL as Browser, not as python urllib
+page = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+infile = urllib.request.urlopen(page).read()
+# Read the content as string decoded with ISO-8859-1
+data = infile.decode('ISO-8859-1')
 
-
-headers = {
-    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_1_2 like Mac OS X) AppleWebKit/604.3.5 (KHTML, like Gecko) Mobile/15B202 NETGEAR/v1 (iOS Vuezone)',
-}
-session = requests.Session()
-r = session.options(config.url, headers=headers)
-print_raw_http(r)
-r.raise_for_status()
+print(data)  # Print the data to the screen
