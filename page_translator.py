@@ -19,7 +19,7 @@ def page_translate(url):
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
-    novel_content = novelSoup.find('div', id='readcontent')
+    novel_content = novelSoup.find("div", {"class": "readcontent"})
     novel_content = novel_content.get_text(strip=True, separator='\n')
 
     text = '[unedited]' + '\n'
@@ -80,7 +80,8 @@ def page_publishandlink(df):
         page_lst.append(dd.find('a')['href'])
     # print(page_lst)
     for page in sorted(page_lst):
-        url = config.url + page
+        url = config.url + str(page)
+        print(url)
         try:
             heading = header_name(url)
             print(heading)
