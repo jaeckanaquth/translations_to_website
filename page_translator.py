@@ -12,6 +12,7 @@ from novelupdates_release import page_linktonu
 from wordpress_post import posting, posting_test
 from requests.auth import HTTPBasicAuth
 
+count = 0
 user_agent = {'User-Agent': 'Mozilla/5.0'}
 
 def page_translate(url):
@@ -44,7 +45,7 @@ def header_name(url):
     novel.raise_for_status()
     novel.encoding = "GBK"
     novelSoup = bs(novel.text, "html.parser")
-    heading = novelSoup.find('h1')
+    heading = novelSoup.find("li", {"class": "active"})
     heading = heading.get_text(strip=True, separator='\n')  
     header = ''
     for content in heading.split(" "):
@@ -56,7 +57,7 @@ def header_name(url):
                 header = header + " " + translated
             if header[-1] == ")":
                 
-                header = header.split(" ")[:-1]
+                header = header.split(" ")
                 heading = ''
                 for i in header:
                     if heading == '':
