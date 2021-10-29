@@ -51,6 +51,7 @@ def page_linktonu(release_link_url, header):
 
     except Exception as e:
         print("Error of NU:" + str(e))
+        exit()
 
     driver.find_element_by_name("submit").click()
     driver.close()
