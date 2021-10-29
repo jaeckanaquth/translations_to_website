@@ -100,7 +100,7 @@ def page_publishandlink(df):
                 df = df.append(dct, ignore_index=True)
                 df.to_csv('published.csv', mode='a')
                 print(df)
-                pause.days(7)
+                break
         except Exception as e:
             print("Error in Publishing: " + str(e))
             exit()
