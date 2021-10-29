@@ -24,7 +24,10 @@ def main_img():
     return novel_img, img_data
 
 filename = novel_name.replace(" ", "-") + ".jpg"
-published = pd.DataFrame(columns=["name", "post_id", "link_id", "wp_link"])
+if glob.glob("published.csv"):
+    published = pd.read_csv("published.csv")
+else:
+    published = pd.DataFrame(columns=["name", "post_id", "link_id", "wp_link"])
 
 if filename not in published["name"].to_list():
     novel_img, img_data = main_img()
@@ -32,6 +35,7 @@ if filename not in published["name"].to_list():
     # img_id = 'abc'
     dct = {"name": filename, "post_id": img_id, "link_id": novel_img, "wp_link": novel_link + img_id}
     published = published.append(dct, ignore_index=True)
+    published.to_csv('published.csv', mode='a')
     print(published)
         
 #save novel chapters

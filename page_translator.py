@@ -93,10 +93,12 @@ def page_publishandlink(df):
                 content = page_translate(url)                    
                 # whoops, I forgot to publish it!
                 publish_id = posting(heading, content)
+                #also need to put it on NU
                 # print(page_linktonu(config.novel_link + publish_id, 'c' + str(df.shape[0] + 1)))
                 dct = {"name": heading, "post_id": publish_id,
                        "link_id": url, "wp_link": config.novel_link + publish_id}
                 df = df.append(dct, ignore_index=True)
+                df.to_csv('published.csv', mode='a')
                 print(df)
                 pause.days(7)
         except Exception as e:
