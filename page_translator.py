@@ -80,7 +80,7 @@ def page_publishandlink(df):
         page_lst.append(dd.find('a')['href'])
     # print(page_lst)
     for page in sorted(page_lst):
-        url = config.translation_site + page
+        url = config.url + page
         try:
             heading = header_name(url)
             print(heading)
