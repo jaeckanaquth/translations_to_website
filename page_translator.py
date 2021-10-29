@@ -21,6 +21,7 @@ def page_translate(url):
     novelSoup = bs(novel.text, "html.parser")
     novel_content = novelSoup.find("div", {"class": "readcontent"})
     novel_content = novel_content.get_text(strip=True, separator='\n')
+    novel_content = novel_content.replace('AD4', '').replace('\\n', '\n').replace('\x1a', '')
 
     text = '[unedited]' + '\n'
     for content in novel_content.split("\n"):
