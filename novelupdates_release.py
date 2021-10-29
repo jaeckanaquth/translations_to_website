@@ -14,9 +14,7 @@ def page_linktonu(release_link_url, header):
     url = "https://www.novelupdates.com/add-release/"
     login = "https://www.novelupdates.com/login/"
 
-    myedge = "C:/Users/jaeck/Documents/personal_workspace/downloads/msedgedriver.exe"
-
-    driver = webdriver.Edge(executable_path= myedge)
+    driver = webdriver.Firefox()
     driver.get(login)
     # sleep(30)
     username = driver.find_element_by_id("user_login")
