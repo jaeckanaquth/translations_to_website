@@ -35,9 +35,10 @@ try:
     published = pd.DataFrame(worksheet.get_all_records())
 
 except Exception as e:
+    print("Exception:" + e)
     worksheet = sh.add_worksheet(title=name_edit, rows="100", cols="4")
     published = pd.DataFrame(columns = ["name", "post_id", "link_id", "wp_link"])
-    print("Exception:" + e)
+    
 
 try:
     published["name"].to_list()
