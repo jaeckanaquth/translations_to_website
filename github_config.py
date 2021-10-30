@@ -1,5 +1,7 @@
 import os
 
+from gspread.auth import service_account
+
 password = str(os.environ['WP_PASSWORD'])
 user = str(os.environ['WP_USER'])
 url = str(os.environ['T_NOVEL'])
@@ -13,3 +15,4 @@ special = ['[', ']', '\\', '\'', '!', '@', '#', '$', '%', '^', '&', '*','{', '}'
 tags = [str(os.environ['TAG1'])]
 name_edit = novel_name.lower().replace(" ", '-')
 novel_link = f"{str(os.environ['NOVEL_LINK'])}{name_edit}/"
+service_account = str(os.environ['G_SECRETS'])

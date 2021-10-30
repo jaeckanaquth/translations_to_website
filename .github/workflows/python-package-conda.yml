@@ -45,5 +45,6 @@ jobs:
         NOVEL_NAME: "I Became a Heartthrob After A Job in Quick Transmigration"
         T_SITE: "https://www.mbtxt.la/go/"
         TAG1: "IBHAJQT"
+        G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |
         python main_novel_page.py

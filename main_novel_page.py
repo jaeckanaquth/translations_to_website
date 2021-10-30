@@ -1,3 +1,4 @@
+import json
 from os import name
 import requests, glob
 import gspread
@@ -8,13 +9,15 @@ from bs4 import BeautifulSoup as bs
 if glob.glob("config.py"):
     from config import url, novel_name, novel_link, name_edit
 else:
-    from github_config import url, novel_name, novel_link, name_edit
+    from github_config import url, novel_name, novel_link, name_edit, service_account
 from page_translator import page_publishandlink
 from wordpress_post import uploadImage
 from requests.auth import HTTPBasicAuth
 
 user_agent = {'User-Agent': 'Mozilla/5.0'}
-
+if not glob.glob("service_account.json"):
+    with open('service_account.json', 'w') as f:
+        json.dump(service_account, f)
 gc = gspread.service_account(filename="service_account.json")
 
 try:
