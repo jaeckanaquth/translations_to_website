@@ -35,7 +35,6 @@ try:
     published = pd.DataFrame(worksheet.get_all_records())
 
 except Exception as e:
-    print("Exception:" + e)
     worksheet = sh.add_worksheet(title=name_edit, rows="100", cols="4")
     published = pd.DataFrame(columns = ["name", "post_id", "link_id", "wp_link"])
     
@@ -47,7 +46,7 @@ except:
     published["post_id"] = "test"
     published["link_id"] = "test"
     published["wp_link"] = "test"
-    print("For the first time print \n" + published["name"].to_list())
+    print("For the first time print \n" + str(published["name"].to_list()))
 
 if filename not in published["name"].to_list():
     novel_img, img_data = novel_scrap.main_img()
