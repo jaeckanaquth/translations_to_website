@@ -1,16 +1,12 @@
 import gspread_dataframe as gd
 import gspread
-import glob
-if glob.glob("config.py"):
-    import config
-else:
-    import github_config as config
+import config
 import urllib.request
 
-url = 'https://www.shubaow.net/127_127391/'
+url = 'https://www.yawen.cc/dushi/89378/'
 
 # Open the URL as Browser, not as python urllib
-page = urllib.request.Request(url)
+page = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
 infile = urllib.request.urlopen(page).read()
 # Read the content as string decoded with ISO-8859-1
 data = infile.decode('ISO-8859-1')
