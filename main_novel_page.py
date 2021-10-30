@@ -38,19 +38,20 @@ except:
     worksheet = sh.add_worksheet(title=name_edit, rows="100", cols="4")
     published = pd.DataFrame(columns = ["name", "post_id", "link_id", "wp_link"])
 
+try:
+    published["name"].to_list()
+except:
+    published["name"] = "test"
+    published["post_id"] = "test"
+    published["link_id"] = "test"
+    published["wp_link"] = "test"
+
 if filename not in published["name"].to_list():
     novel_img, img_data = novel_scrap.main_img()
     img_id = uploadImage(novel_img, img_data)
     # img_id = 'abc'
     dct = {"name": filename, "post_id": img_id, "link_id": novel_img, "wp_link": ""}
-    try:
-        published = published.append(dct, ignore_index=True)
-    except:
-        published["name"] = "test"
-        published["post_id"] = "test"
-        published["link_id"] = "test"
-        published["wp_link"] = "test"
-        published = published.append(dct, ignore_index=True)
+    published = published.append(dct, ignore_index=True)
     gd.set_with_dataframe(worksheet, published)
     published = updates(published,worksheet)
     print(published)
