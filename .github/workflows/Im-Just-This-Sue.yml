@@ -42,7 +42,7 @@ jobs:
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
         T_NOVEL: "https://www.imiaobige.com/novel/11875/"
-        NOVEL_NAME: "I'm Just This 'Sue'"
+        NOVEL_NAME: "Im Just This Sue"
         T_SITE: "https://www.imiaobige.com/novel/"
         TAG1: "IJTS"
         G_SECRETS: ${{ secrets.G_SECRETS }}
