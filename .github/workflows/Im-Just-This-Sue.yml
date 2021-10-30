@@ -1,8 +1,9 @@
 name: Python Package using Conda
 
 on:
-  schedule:
-    - cron: '0 0 * * MON'
+  push:
+    schedule:
+      - cron: '0 0 * * MON'
 
 jobs:
   Im-Just-This-Sue:
@@ -46,4 +47,4 @@ jobs:
         TAG1: "IJTS"
         G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |
-        python main_novel_page.py
+        python test.py
