@@ -41,5 +41,9 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
+        T_NOVEL: "https://www.mbtxt.la/go/91929/"
+        NOVEL_NAME: "I Became a Heartthrob After A Job in Quick Transmigration"
+        T_SITE: "https://www.mbtxt.la/go/"
+        TAG1: "IBHAJQT"
       run: |
         python main_novel_page.py

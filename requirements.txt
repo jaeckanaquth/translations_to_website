@@ -3,3 +3,5 @@ deep-translator
 python-wordpress-xmlrpc
 environs
 requests-toolbelt
+pygsheets
+gspread-dataframe

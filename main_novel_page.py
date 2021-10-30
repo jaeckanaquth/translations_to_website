@@ -1,43 +1,46 @@
+from os import name
 import requests, glob
+import gspread
+import novel_scrap
+import gspread_dataframe as gd
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 if glob.glob("config.py"):
-    from config import url, novel_name, novel_link
+    from config import url, novel_name, novel_link, name_edit
 else:
-    from github_config import url, novel_name, novel_link
+    from github_config import url, novel_name, novel_link, name_edit
 from page_translator import page_publishandlink
 from wordpress_post import uploadImage
 from requests.auth import HTTPBasicAuth
 
 user_agent = {'User-Agent': 'Mozilla/5.0'}
 
-def main_img():
-    session = requests.Session()
-    novel = session.get(url, headers=user_agent)
-    novel.raise_for_status()
-    print(novel.status_code)
-    novel.encoding = "GBK"
-    novelSoup = bs(novel.text, "html.parser")
-    novel_img = novelSoup.find("img", {"class": "thumbnail"})
-    novel_img = novel_img['src']
-    img_data = requests.get(novel_img).content
-    return novel_img, img_data
+gc = gspread.service_account(filename="service_account.json")
+
+try:
+    sh = gc.open("QuthsTranslations")
+except:
+    sh = gc.create("QuthsTranslations")
 
 filename = novel_name.replace(" ", "-") + ".jpg"
-if glob.glob("published.csv"):
-    published = pd.read_csv("published.csv")
-else:
-    published = pd.DataFrame(columns=["name", "post_id", "link_id", "wp_link"])
+
+try:
+    worksheet = gc.open('QuthsTranslations').worksheet(name_edit)
+    published = pd.DataFrame(worksheet.get_all_records())
+
+except:
+    worksheet = sh.add_worksheet(title=name_edit, rows="100", cols="4")
+    published = pd.DataFrame(columns = ["name", "post_id", "link_id", "wp_link"])
 
 if filename not in published["name"].to_list():
-    novel_img, img_data = main_img()
+    novel_img, img_data = novel_scrap.main_img()
     img_id = uploadImage(novel_img, img_data)
     # img_id = 'abc'
-    dct = {"name": filename, "post_id": img_id, "link_id": novel_img, "wp_link": novel_link + img_id}
+    dct = {"name": filename, "post_id": img_id, "link_id": novel_img, "wp_link": ""}
     published = published.append(dct, ignore_index=True)
-    published.to_csv('published.csv', mode='a')
+    gd.set_with_dataframe(worksheet, published)
     print(published)
         
 #save novel chapters
-page_publishandlink(published)
+page_publishandlink(published, worksheet)
 
