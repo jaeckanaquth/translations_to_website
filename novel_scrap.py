@@ -81,3 +81,15 @@ def main_img():
         novel_img = novel_img['src']
         img_data = requests.get(novel_img).content
         return novel_img, img_data
+    elif "imiaobige.com" in config.url:
+        session = requests.Session()
+        url = config.url[:-1] + ".html"
+        novel = session.get(url, headers=user_agent)
+        novel.raise_for_status()
+        print(novel.status_code)
+        novel.encoding = "GBK"
+        novelSoup = bs(novel.text, "html.parser")
+        novel_img = novelSoup.find("img")
+        novel_img = novel_img['src']
+        img_data = requests.get(novel_img).content
+        return novel_img, img_data
