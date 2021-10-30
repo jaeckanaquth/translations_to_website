@@ -45,6 +45,7 @@ except:
     published["post_id"] = "test"
     published["link_id"] = "test"
     published["wp_link"] = "test"
+    print("For the first time print \n" + published["name"].to_list())
 
 if filename not in published["name"].to_list():
     novel_img, img_data = novel_scrap.main_img()
