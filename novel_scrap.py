@@ -25,9 +25,11 @@ def page_scrap():
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
         page_lst = []
-        novel_link = novelSoup.findAll("a", {"class": "biaot"})
+        novel_link = novelSoup.find_all("div", {"id": "newlist"})
+        novel_link = novel_link[0].find_all("li")
         for dd in novel_link:
-            page_lst.append(dd.get('href'))
+            print(dd.find('a')['href'])
+            page_lst.append(dd.find('a')['href'].replace("/read/", ""))
         return page_lst
 
 def header_scrap(url):
