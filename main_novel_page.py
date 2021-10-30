@@ -6,6 +6,7 @@ import novel_scrap
 import gspread_dataframe as gd
 import pandas as pd
 from bs4 import BeautifulSoup as bs
+from update_sheet import updates
 if glob.glob("config.py"):
     from config import url, novel_name, novel_link, name_edit
 else:
@@ -44,6 +45,7 @@ if filename not in published["name"].to_list():
     dct = {"name": filename, "post_id": img_id, "link_id": novel_img, "wp_link": ""}
     published = published.append(dct, ignore_index=True)
     gd.set_with_dataframe(worksheet, published)
+    published = updates(published,worksheet)
     print(published)
         
 #save novel chapters

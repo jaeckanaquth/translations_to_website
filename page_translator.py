@@ -80,7 +80,7 @@ def page_publishandlink(df, worksheet):
                 head = heading.replace(
                     "(", "").replace(")", "").replace(" ", "-") + "/"
                 dct = {"name": heading, "post_id": publish_id,
-                       "link_id": url, "wp_link": config.novel_link + head}
+                       "link_id": url, "wp_link": config.novel_link + head.lower()}
                 df = df.append(dct, ignore_index=True)
                 gd.set_with_dataframe(worksheet, df)
                 print(df)

@@ -28,5 +28,3 @@ worksheet = spreadsheet.add_worksheet(title="A worksheet", rows="100", cols="5")
 existing = gd.get_as_dataframe(ws)
 updated = existing.append(your_new_data)
 gd.set_with_dataframe(ws, updated)
-
-I Became a Heartthrob After A Job in Quick Transmigration
