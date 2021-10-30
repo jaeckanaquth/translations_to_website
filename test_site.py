@@ -1,6 +1,10 @@
 import gspread_dataframe as gd
 import gspread
-import config
+import glob
+if glob.glob("config.py"):
+    import config
+else:
+    import github_config as config
 import urllib.request
 
 url = 'https://www.shubaow.net/127_127391/'
