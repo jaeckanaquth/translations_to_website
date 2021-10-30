@@ -1,4 +1,9 @@
-import config, requests
+import glob
+if glob.glob("config.py"):
+    import config
+else:
+    import github_config as config
+import requests
 from bs4 import BeautifulSoup as bs
 
 user_agent = {'User-Agent': 'Mozilla/5.0'}
