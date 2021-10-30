@@ -34,9 +34,10 @@ try:
     worksheet = gc.open('QuthsTranslations').worksheet(name_edit)
     published = pd.DataFrame(worksheet.get_all_records())
 
-except:
+except Exception as e:
     worksheet = sh.add_worksheet(title=name_edit, rows="100", cols="4")
     published = pd.DataFrame(columns = ["name", "post_id", "link_id", "wp_link"])
+    print("Exception:" + e)
 
 try:
     published["name"].to_list()
