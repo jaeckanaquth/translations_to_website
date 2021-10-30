@@ -1,8 +1,9 @@
 name: Python Package using Conda
 
 on:
-  schedule:
-    - cron: '0 0 * * MON'
+  push:
+    schedule:
+      - cron: '0 0 * * MON'
 
 jobs:
   I'm-Just-This-'Sue':
