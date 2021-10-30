@@ -17,19 +17,21 @@ def page_scrap():
         page_lst = []
         novel_link = novelSoup.findAll('dd')
         for dd in novel_link:
-            page_lst.append(dd.find('a')['href'])
+            url = config.url + str(dd.find('a')['href'])
+            page_lst.append(url)
         return page_lst
-    elif "imiaobige.com" in config.url:
+    elif "52shuku123.com" in config.url:
         novel = requests.get(config.url, headers=user_agent)
         novel.raise_for_status()
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
         page_lst = []
-        novel_link = novelSoup.find_all("div", {"id": "readerlists"})
-        novel_link = novel_link[0].find_all("li")
+        novel_link = novelSoup.find_all("div", {"id": "list-chapterAll"})
+        novel_link = novel_link[0].find_all("dd")
         for dd in novel_link:
-            print(dd.find('a')['href'])
-            page_lst.append(dd.find('a')['href'])
+            url = config.url + dd.find('a')['href']
+            page_lst.append(url)
+
         return page_lst
 
 def header_scrap(url):
@@ -41,12 +43,12 @@ def header_scrap(url):
         heading = novelSoup.find("li", {"class": "active"})
         heading = heading.get_text(strip=True, separator='\n')
         return heading
-    elif "imiaobige.com" in config.url:
+    elif "52shuku123.com" in config.url:
         novel = requests.get(url, headers=user_agent)
         novel.raise_for_status()
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
-        heading = novelSoup.find("h1")
+        heading = novelSoup.find("li", {"class": "active"})
         heading = heading.get_text(strip=True, separator='\n')
         return heading
 
@@ -60,14 +62,15 @@ def text_scrap(url):
         novel_content = novel_content.get_text(strip=True, separator='\n')
         novel_content = novel_content.replace('AD4', '').replace('\\n', '\n').replace('\x1a', '')
         return novel_content
-    elif "imiaobige.com" in config.url:
+    elif "52shuku123.com" in config.url:
         novel = requests.get(url, headers=user_agent)
         novel.raise_for_status()
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
-        novel_content = novelSoup.find("div", {"id": "content"})
+        novel_content = novelSoup.find("div", {"class": "readcontent"})
         novel_content = novel_content.get_text(strip=True, separator='\n')
-        novel_content = novel_content.replace('AD4', '').replace('\\n', '\n').replace('\x1a', '')
+        novel_content = novel_content.replace(
+            'AD4', '').replace('\\n', '\n').replace('\x1a', '')
         return novel_content
 
 
@@ -83,10 +86,9 @@ def main_img():
         novel_img = novel_img['src']
         img_data = requests.get(novel_img).content
         return novel_img, img_data
-    elif "imiaobige.com" in config.url:
+    elif "52shuku123.com" in config.url:
         session = requests.Session()
-        url = config.url[:-1] + ".html"
-        url.replace("/read/", "/novel/")
+        url = config.url
         novel = session.get(url, headers=user_agent)
         novel.raise_for_status()
         print(novel.status_code)

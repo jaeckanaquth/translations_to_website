@@ -41,9 +41,9 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
-        T_NOVEL: "https://www.imiaobige.com/novel/251966/"
+        T_NOVEL: "https://www.52shuku123.com/go/21673/"
         NOVEL_NAME: "Being an Author is a High Risk Occupation"
-        T_SITE: "https://www.imiaobige.com/novel/"
+        T_SITE: "https://www.52shuku123.com/go/"
         TAG1: "BAHRO"
         G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |

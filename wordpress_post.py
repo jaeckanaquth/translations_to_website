@@ -23,7 +23,7 @@ def posting_test(heading, df):
         [p.replace(i, '') for i in config.special]
         posting[j] = p
     print(posting, heading)
-    if heading == "Works related":
+    if heading == "Works related" or heading == "Let\'s see what we are doing":
         return "Summary post seprately"
     elif heading in posting or heading in df['name'].to_list():
         return "Already posted"
