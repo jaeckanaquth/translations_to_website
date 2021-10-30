@@ -1,8 +1,9 @@
 name: Python Package using Conda
 
 on:
-  schedule:
-    - cron: '0 0 * * TUE'
+  push:
+    schedule:
+      - cron: '0 0 * * TUE'
 
 jobs:
   Being-an-Author-is-a-High-Risk-Occupation:
@@ -40,9 +41,9 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
-        T_NOVEL: "https://www.52shuku123.com/go/21673/"
+        T_NOVEL: "https://www.yawen.cc/dushi/89378/"
         NOVEL_NAME: "Being an Author is a High Risk Occupation"
-        T_SITE: "https://www.52shuku123.com/go/"
+        T_SITE: "https://www.yawen.cc"
         TAG1: "BAHRO"
         G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |

@@ -3,7 +3,7 @@ import gspread
 import github_config as config
 import urllib.request
 
-url = 'https://www.yawen.cc/dushi/89378/'
+url = 'https://www.shukeba.com/137344/'
 
 # Open the URL as Browser, not as python urllib
 page = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})

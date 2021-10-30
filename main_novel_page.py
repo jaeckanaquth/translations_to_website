@@ -55,9 +55,10 @@ if filename not in published["name"].to_list():
     dct = {"name": filename, "post_id": img_id, "link_id": novel_img, "wp_link": ""}
     published = published.append(dct, ignore_index=True)
     gd.set_with_dataframe(worksheet, published)
-    published = updates(published,worksheet)
+    
     print(published)
         
 #save novel chapters
+published = updates(published, worksheet)
 page_publishandlink(published, worksheet)
 
