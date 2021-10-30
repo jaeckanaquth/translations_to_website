@@ -19,6 +19,16 @@ def page_scrap():
         for dd in novel_link:
             page_lst.append(dd.find('a')['href'])
         return page_lst
+    elif "imiaobige.com" in config.url:
+        novel = requests.get(config.url, headers=user_agent)
+        novel.raise_for_status()
+        novel.encoding = "GBK"
+        novelSoup = bs(novel.text, "html.parser")
+        page_lst = []
+        novel_link = novelSoup.findAll("a", {"class": "biaot"})
+        for dd in novel_link:
+            page_lst.get('href')
+        return page_lst
 
 def header_scrap(url):
     if "www.mbtxt.la" in config.url:
@@ -27,6 +37,14 @@ def header_scrap(url):
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
         heading = novelSoup.find("li", {"class": "active"})
+        heading = heading.get_text(strip=True, separator='\n')
+        return heading
+    elif "imiaobige.com" in config.url:
+        novel = requests.get(url, headers=user_agent)
+        novel.raise_for_status()
+        novel.encoding = "GBK"
+        novelSoup = bs(novel.text, "html.parser")
+        heading = novelSoup.find("h1")
         heading = heading.get_text(strip=True, separator='\n')
         return heading
 
@@ -38,8 +56,16 @@ def text_scrap(url):
         novelSoup = bs(novel.text, "html.parser")
         novel_content = novelSoup.find("div", {"class": "readcontent"})
         novel_content = novel_content.get_text(strip=True, separator='\n')
-        novel_content = novel_content.replace(
-            'AD4', '').replace('\\n', '\n').replace('\x1a', '')
+        novel_content = novel_content.replace('AD4', '').replace('\\n', '\n').replace('\x1a', '')
+        return novel_content
+    elif "imiaobige.com" in config.url:
+        novel = requests.get(url, headers=user_agent)
+        novel.raise_for_status()
+        novel.encoding = "GBK"
+        novelSoup = bs(novel.text, "html.parser")
+        novel_content = novelSoup.find("div", {"id": "content"})
+        novel_content = novel_content.get_text(strip=True, separator='\n')
+        novel_content = novel_content.replace('AD4', '').replace('\\n', '\n').replace('\x1a', '')
         return novel_content
 
 
