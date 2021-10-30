@@ -6,7 +6,7 @@ on:
     - cron: '0 0 * * SUN'
 
 jobs:
-  service_account:
+  I-Became-a-Heartthrob-After-A-Job-in-Quick-Transmigration:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 5
