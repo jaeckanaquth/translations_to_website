@@ -27,7 +27,7 @@ def page_scrap():
         page_lst = []
         novel_link = novelSoup.findAll("a", {"class": "biaot"})
         for dd in novel_link:
-            page_lst.get('href')
+            dd.get('href')
         return page_lst
 
 def header_scrap(url):
