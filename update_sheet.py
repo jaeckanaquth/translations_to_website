@@ -14,6 +14,7 @@ def updates(df, worksheet):
             heading = heading.get_text(strip=True, separator='\n')
             worksheet.update('A1', [name, heading])
             published = pd.DataFrame(worksheet.get_all_records())
+            print("Done for!! " + name + ": and did it")
             return published
         except:
             print("Done for!! " + name + " and could not do it")
