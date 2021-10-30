@@ -15,7 +15,9 @@ from wordpress_post import uploadImage
 from requests.auth import HTTPBasicAuth
 
 user_agent = {'User-Agent': 'Mozilla/5.0'}
+
 if not glob.glob("service_account.json"):
+    service_account = json.loads(service_account)
     with open('service_account.json', 'w') as f:
         json.dump(service_account, f)
 gc = gspread.service_account(filename="service_account.json")

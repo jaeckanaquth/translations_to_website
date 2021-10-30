@@ -6,7 +6,7 @@ on:
     - cron: '0 0 * * SUN'
 
 jobs:
-  build-linux:
+  service_account:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 5
