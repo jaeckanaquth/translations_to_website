@@ -6,8 +6,8 @@ user_agent = {'User-Agent': 'Mozilla/5.0'}
 
 
 def updates(df, worksheet):
-    try:
-        for url, name in zip(df['wp_link'].to_list(), df['name'].to_list()):
+    for url, name in zip(df['wp_link'].to_list(), df['name'].to_list()):
+        try:
             novel = requests.get(url, headers=user_agent)
             novelSoup = bs(novel.text, "html.parser")
             heading = novelSoup.find("h1", {"class": "entry-title"})
@@ -15,6 +15,6 @@ def updates(df, worksheet):
             worksheet.update('A1', [name, heading])
             published = pd.DataFrame(worksheet.get_all_records())
             return published
-    except:
-        print("Done for!!")
+        except:
+            print("Done for!! " + name + " and could not do it")
 
