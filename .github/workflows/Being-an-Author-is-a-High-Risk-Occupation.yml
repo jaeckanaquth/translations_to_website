@@ -1,9 +1,8 @@
 name: Python Package using Conda
 
 on:
-  push:
-    schedule:
-      - cron: '0 0 * * TUE'
+  schedule:
+    - cron: '0 0 * * TUE'
 
 jobs:
   Being-an-Author-is-a-High-Risk-Occupation:
