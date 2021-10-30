@@ -1,6 +1,6 @@
 import gspread_dataframe as gd
 import gspread
-import config
+import github_config as config
 import urllib.request
 
 url = 'https://www.yawen.cc/dushi/89378/'
