@@ -62,9 +62,8 @@ def header_name(url):
 
 def page_publishandlink(df, worksheet):
     page_lst = novel_scrap.page_scrap()
-    # print(page_lst)
     for page in sorted(page_lst):
-        url = config.url + str(page)
+        url = config.translation_site + str(page)
         print(url)
         try:
             heading = header_name(url)

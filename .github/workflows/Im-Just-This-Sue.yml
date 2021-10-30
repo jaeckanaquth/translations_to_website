@@ -1,8 +1,9 @@
 name: Python Package using Conda
 
 on:
-  schedule:
-    - cron: '0 0 * * MON'
+  push:
+    schedule:
+      - cron: '0 0 * * MON'
 
 jobs:
   Im-Just-This-Sue:
@@ -40,9 +41,9 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
-        T_NOVEL: "https://www.imiaobige.com/novel/11875/"
+        T_NOVEL: "https://www.imiaobige.com/read/251966/"
         NOVEL_NAME: "Im Just This Sue"
-        T_SITE: "https://www.imiaobige.com/novel/"
+        T_SITE: "https://www.imiaobige.com"
         TAG1: "IJTS"
         G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |

@@ -25,11 +25,11 @@ def page_scrap():
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
         page_lst = []
-        novel_link = novelSoup.find_all("div", {"id": "newlist"})
+        novel_link = novelSoup.find_all("div", {"id": "readerlists"})
         novel_link = novel_link[0].find_all("li")
         for dd in novel_link:
             print(dd.find('a')['href'])
-            page_lst.append(dd.find('a')['href'].replace("/read/", ""))
+            page_lst.append(dd.find('a')['href'])
         return page_lst
 
 def header_scrap(url):
@@ -86,6 +86,7 @@ def main_img():
     elif "imiaobige.com" in config.url:
         session = requests.Session()
         url = config.url[:-1] + ".html"
+        url.replace("/read/", "/novel/")
         novel = session.get(url, headers=user_agent)
         novel.raise_for_status()
         print(novel.status_code)

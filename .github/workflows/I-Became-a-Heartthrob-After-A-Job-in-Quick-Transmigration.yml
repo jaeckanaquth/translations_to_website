@@ -1,8 +1,9 @@
 name: Python Package using Conda
 
 on:
-  schedule:
-    - cron: '0 0 * * SUN'
+  push:
+    schedule:
+      - cron: '0 0 * * SUN'
 
 jobs:
   I-Became-a-Heartthrob-After-A-Job-in-Quick-Transmigration:
@@ -42,7 +43,7 @@ jobs:
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
         T_NOVEL: "https://www.mbtxt.la/go/91929/"
         NOVEL_NAME: "I Became a Heartthrob After A Job in Quick Transmigration"
-        T_SITE: "https://www.mbtxt.la/go/"
+        T_SITE: "https://www.mbtxt.la/go/91929/"
         TAG1: "IBHAJQT"
         G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |
