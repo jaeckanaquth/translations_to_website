@@ -41,10 +41,10 @@ jobs:
         WP_USER: ${{ secrets.WP_USER }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
-        T_NOVEL: "http://www.jjwxc.net/onebook.php?novelid=3046784"
+        T_NOVEL: "http://www.jjwxc.net/onebook.php?novelid=3046784/"
         NOVEL_NAME: "Im Just This Sue"
-        T_SITE: "http://www.jjwxc.net/onebook.php"
+        T_SITE: "http://www.jjwxc.net/onebook.php?"
         TAG1: "IJTS"
         G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |
-        python test_site.py
+        python main_novel_page.py

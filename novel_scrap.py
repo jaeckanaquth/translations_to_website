@@ -33,7 +33,7 @@ def main_img():
         novel_img = "https:" + novel_img['src']
         img_data = requests.get(novel_img).content
         return novel_img, img_data
-    elif "jjwxc.com" in config.url:
+    elif "jjwxc.net" in config.url:
         session = requests.Session()
         url = config.url
         novel = session.get(url, headers=user_agent)
@@ -70,7 +70,7 @@ def page_scrap():
             url = config.translation_site + dd.find('a')['href']
             page_lst.append(url)
         return page_lst
-    elif "jjwxc.com" in config.url:
+    elif "jjwxc.net" in config.url:
         novel = requests.get(config.url, headers=user_agent)
         novel.raise_for_status()
         novel.encoding = "GBK"
@@ -84,6 +84,7 @@ def page_scrap():
                 page_lst.append(url)
             except:
                 pass
+        # print(page_lst)
         return page_lst
 
 def header_scrap(url):
@@ -104,13 +105,13 @@ def header_scrap(url):
         heading = heading.find("h1")
         heading = heading.get_text(strip=True, separator='\n')
         return heading
-    elif "jjwxc.com" in config.url:
+    elif "jjwxc.net" in config.url:
         novel = requests.get(url, headers=user_agent)
         novel.raise_for_status()
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
-        heading = novelSoup.find("div", {"class": "article_title"})
-        heading = heading.find("h1")
+        heading = novelSoup.find("div")
+        heading = novelSoup.find("h2")
         heading = heading.get_text(strip=True, separator='\n')
         return heading
 
@@ -134,12 +135,13 @@ def text_scrap(url):
         novel_content = novel_content.replace(
             'AD4', '').replace('\\n', '\n').replace('\x1a', '')
         return novel_content
-    elif "jjwxc.com" in config.url:
+    elif "jjwxc.net" in config.url:
         novel = requests.get(url, headers=user_agent)
         novel.raise_for_status()
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
-        novel_content = novelSoup.find("div", {"class": "content_left"})
+        novel_content = novelSoup.find("div", {"class": "noveltext"})
+        # novel_content = novel_content.find_all("font")
         novel_content = novel_content.get_text(strip=True, separator='\n')
         novel_content = novel_content.replace(
             'AD4', '').replace('\\n', '\n').replace('\x1a', '').replace("�", "")

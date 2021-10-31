@@ -6,7 +6,6 @@ import novel_scrap
 import gspread_dataframe as gd
 import pandas as pd
 from bs4 import BeautifulSoup as bs
-from update_sheet import updates
 if glob.glob("config.py"):
     from config import url, novel_name, novel_link, name_edit
 else:
@@ -59,6 +58,6 @@ if filename not in published["name"].to_list():
     print(published)
         
 #save novel chapters
-published = updates(published, worksheet)
+# published = updates(published, worksheet)
 page_publishandlink(published, worksheet)
 
