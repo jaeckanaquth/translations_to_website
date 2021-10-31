@@ -23,10 +23,10 @@ def posting_test(heading, df):
         [p.replace(i, '') for i in config.special]
         posting[j] = p
     print(posting, heading)
-    name = config.novel_link + heading.lower().replace(" ", "-") + "/"
+    # name = config.novel_link + heading.lower().replace(" ", "-") + "/"
     if heading == "Works related" or heading == "Let\'s see what we are doing":
         return "Summary post seprately"
-    elif heading in posting or name in df['wp_link'].to_list():
+    elif heading in posting or heading in df['name'].to_list():
         return "Already posted"
     else:
         return "Need to be posted"
