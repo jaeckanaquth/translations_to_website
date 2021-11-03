@@ -1,9 +1,10 @@
 name: Python Package using Conda
 
 on:
-  schedule:
-    - cron: '0 0 * * SUN'
-    - cron: '0 0 * * THU'
+  push:
+    schedule:
+      - cron: '0 0 * * SUN'
+      - cron: '0 0 * * THU'
 
 jobs:
   I-Became-a-Heartthrob-After-A-Job-in-Quick-Transmigration:

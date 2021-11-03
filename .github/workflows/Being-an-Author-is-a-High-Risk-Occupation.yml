@@ -1,10 +1,11 @@
 name: Python Package using Conda
 
 on:
-  schedule:
-    - cron: '0 0 * * TUE'
-    - cron: '0 0 * * FRI'
-    - cron: '0 0 * * SAT'
+  push:
+    schedule:
+      - cron: '0 0 * * TUE'
+      - cron: '0 0 * * FRI'
+      - cron: '0 0 * * SAT'
 
 jobs:
   Being-an-Author-is-a-High-Risk-Occupation:
