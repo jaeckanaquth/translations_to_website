@@ -48,4 +48,4 @@ jobs:
         TAG1: "IJTS"
         G_SECRETS: ${{ secrets.G_SECRETS }}
       run: |
-        python main_novel_page.py
+        python test_site.py

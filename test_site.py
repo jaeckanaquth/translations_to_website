@@ -1,7 +1,7 @@
 import github_config as config
 import urllib.request
 
-url = 'http://www.jjwxc.net/onebook.php?novelid=3046784'
+url = 'https://www.shubaow.net/127_127391/'
 
 # Open the URL as Browser, not as python urllib
 page = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
