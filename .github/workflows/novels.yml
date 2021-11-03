@@ -51,7 +51,6 @@ jobs:
       run: |
         python main_novel_page.py
 
-jobs:
   Being-an-Author-is-a-High-Risk-Occupation:
     runs-on: ubuntu-latest
     strategy:
@@ -95,7 +94,6 @@ jobs:
       run: |
         python main_novel_page.py
 
-jobs:
   Im-Just-This-Sue:
     runs-on: ubuntu-latest
     strategy:
