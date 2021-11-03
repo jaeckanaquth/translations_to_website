@@ -1,7 +1,5 @@
 import os
 
-from gspread.auth import service_account
-
 password = str(os.environ['WP_PASSWORD'])
 user = str(os.environ['WP_USER'])
 url = str(os.environ['T_NOVEL'])

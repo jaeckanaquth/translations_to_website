@@ -1,5 +1,3 @@
-import gspread_dataframe as gd
-import gspread
 import github_config as config
 import urllib.request
 

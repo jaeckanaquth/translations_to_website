@@ -4,14 +4,10 @@ if glob.glob("config.py"):
     import config
 else:
     import github_config as config
-import requests
 from wordpress_xmlrpc import Client
 from wordpress_xmlrpc.methods import posts, media
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc import WordPressPost
-from wordpress_xmlrpc import WordPressTerm
-from bs4 import BeautifulSoup as bs
-from wordpress_xmlrpc.methods import taxonomies
 
 client = Client(config.my_site, config.user, config.password)
 # print(posting.split(","))

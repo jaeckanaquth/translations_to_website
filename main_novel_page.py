@@ -1,6 +1,5 @@
 import json
-from os import name
-import requests, glob
+import glob
 import gspread
 import novel_scrap
 import gspread_dataframe as gd
@@ -12,7 +11,6 @@ else:
     from github_config import url, novel_name, novel_link, name_edit, service_account
 from page_translator import page_publishandlink
 from wordpress_post import uploadImage
-from requests.auth import HTTPBasicAuth
 
 user_agent = {'User-Agent': 'Mozilla/5.0'}
 

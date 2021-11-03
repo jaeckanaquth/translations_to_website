@@ -93,8 +93,9 @@ def header_scrap(url):
         novel.raise_for_status()
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
-        heading = novelSoup.find("li", {"class": "active"})
+        heading = novelSoup.find("h1", {"class": "pt10"})
         heading = heading.get_text(strip=True, separator='\n')
+        heading = heading.replace("\n", "")
         return heading
     elif "yawen.cc" in config.url:
         novel = requests.get(url, headers=user_agent)

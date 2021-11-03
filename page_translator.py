@@ -4,14 +4,11 @@ if glob.glob("config.py"):
     import config
 else:
     import github_config as config
-import lxml, os
 import gspread_dataframe as gd
 from bs4 import BeautifulSoup as bs
 import novel_scrap
 from deep_translator import GoogleTranslator
-from novelupdates_release import page_linktonu
 from wordpress_post import posting, posting_test
-from requests.auth import HTTPBasicAuth
 
 
 def page_translate(url):

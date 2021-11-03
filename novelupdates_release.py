@@ -1,8 +1,5 @@
-from selenium.webdriver.support.ui import Select
-from typing import NoReturn
 from selenium import webdriver
-import requests, glob
-from bs4 import BeautifulSoup as bs
+import glob
 from time import sleep
 if glob.glob("config.py"):
     from config import nu_username, nu_password, novel_name, translator
