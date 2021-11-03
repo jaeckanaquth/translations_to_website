@@ -1,7 +1,7 @@
 import github_config as config
 import urllib.request
 
-url = 'https://www.shubaow.net/127_127391/'
+url = 'https://www.52shuku.vip/chongsheng/15386.html'
 
 # Open the URL as Browser, not as python urllib
 page = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
