@@ -4,9 +4,6 @@ on:
   push:
     schedule:
       - cron: '0 0 * * FRI'
-      - cron: '0 0 * * SAT'
-      - cron: '0 0 * * SUN'
-
 jobs:
   I-Became-a-Heartthrob-After-A-Job-in-Quick-Transmigration:
     runs-on: ubuntu-latest

@@ -79,7 +79,10 @@ def page_publishandlink(df, worksheet):
                 df = df.append(dct, ignore_index=True)
                 gd.set_with_dataframe(worksheet, df)
                 print(df)
-                break
+                if glob.glob("config.py"):
+                    pass
+                else:
+                    break
         except Exception as e:
             print("Error in Publishing: " + str(e))
             exit()
