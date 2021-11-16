@@ -20,7 +20,7 @@ def posting_test(heading, df):
         posting[j] = p
     print(posting, heading)
     # name = config.novel_link + heading.lower().replace(" ", "-") + "/"
-    if heading == "Works related" or heading == "Let\'s see what we are doing":
+    if heading == "Works related" or heading == "Let's see what we are doing":
         return "Summary post seprately"
     elif heading in posting or heading in df['name'].to_list():
         return "Already posted"
@@ -39,7 +39,7 @@ def posting(heading, content):
     post.content = content
     post.id = client.call(posts.NewPost(post))
     post.date = datetime.now() + timedelta(days = 7)
-    post.post_status = 'draft'
+    post.post_status = 'publish'
     client.call(posts.EditPost(post.id, post))
     print(post)
     return post.id
