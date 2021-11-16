@@ -67,8 +67,10 @@ def page_scrap():
         page_lst = []
         novel_link = novelSoup.findAll('dd')
         for dd in novel_link:
-            url = config.url + str(dd.find('a')['href'])
-            page_lst.append(url)
+            url_1 = config.url + str(dd.find('a')['href'])
+            url_2 = config.url + str(dd.find('a')['href'])[:-5] + "_2.html"
+            page_lst.append(url_1)
+            page_lst.append(url_2)
         return page_lst
     elif "yawen.cc" in config.url:
         novel = requests.get(config.url, headers=user_agent)
@@ -112,80 +114,85 @@ def page_scrap():
 
 
 def header_scrap(url):
-    if "www.mbtxt.la" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        heading = novelSoup.find("h1", {"class": "pt10"})
-        heading = heading.get_text(strip=True, separator='\n')
-        heading = heading.replace("\n", "")
-        return heading
-    elif "yawen.cc" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        heading = novelSoup.find("div", {"class": "bookname"})
-        heading = heading.find("h1")
-        heading = heading.get_text(strip=True, separator='\n')
-        return heading
-    elif "jjwxc.net" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        heading = novelSoup.find("div")
-        heading = novelSoup.find("h2")
-        heading = heading.get_text(strip=True, separator='\n')
-        return heading
-    elif "shubaow.net" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        heading = novelSoup.find("h1")
-        heading = heading.get_text(strip=True, separator='\n')
-        return heading
-
+    try:
+        if "www.mbtxt.la" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            heading = novelSoup.find("h1", {"class": "pt10"})
+            heading = heading.get_text(strip=True, separator='\n')
+            heading = heading.replace("\n", "")
+            return heading
+        elif "yawen.cc" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            heading = novelSoup.find("div", {"class": "bookname"})
+            heading = heading.find("h1")
+            heading = heading.get_text(strip=True, separator='\n')
+            return heading
+        elif "jjwxc.net" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            heading = novelSoup.find("div")
+            heading = novelSoup.find("h2")
+            heading = heading.get_text(strip=True, separator='\n')
+            return heading
+        elif "shubaow.net" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            heading = novelSoup.find("h1")
+            heading = heading.get_text(strip=True, separator='\n')
+            return heading
+    except Exception as e:
+        print(e)
 def text_scrap(url):
-    if "www.mbtxt.la" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        novel_content = novelSoup.find("div", {"class": "readcontent"})
-        novel_content = novel_content.get_text(strip=True, separator='\n')
-        novel_content = novel_content.replace('AD4', '').replace('\\n', '\n').replace('\x1a', '')
-        return novel_content
-    elif "yawen.cc" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        novel_content = novelSoup.find("div", {"id": "content"})
-        novel_content = novel_content.get_text(strip=True, separator='\n')
-        novel_content = novel_content.replace(
-            'AD4', '').replace('\\n', '\n').replace('\x1a', '')
-        return novel_content
-    elif "jjwxc.net" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        novel_content = novelSoup.find("div", {"class": "noveltext"})
-        # novel_content = novel_content.find_all("font")
-        novel_content = novel_content.get_text(strip=True, separator='\n')
-        novel_content = novel_content.replace(
-            'AD4', '').replace('\\n', '\n').replace('\x1a', '').replace("�", "")
-        return novel_content
-    elif "shubaow.net" in config.url:
-        novel = requests.get(url, headers=user_agent)
-        novel.raise_for_status()
-        novel.encoding = "GBK"
-        novelSoup = bs(novel.text, "html.parser")
-        novel_content = novelSoup.find("div", {"id": "content"})
-        novel_content = novel_content.get_text(strip=True, separator='\n')
-        novel_content = novel_content.replace(
-            'AD4', '').replace('\\n', '\n').replace('\x1a', '')
-        return novel_content
+    try:
+        if "www.mbtxt.la" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            novel_content = novelSoup.find("div", {"class": "readcontent"})
+            novel_content = novel_content.get_text(strip=True, separator='\n')
+            novel_content = novel_content.replace('AD4', '').replace('\\n', '\n').replace('\x1a', '')
+            return novel_content
+        elif "yawen.cc" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            novel_content = novelSoup.find("div", {"id": "content"})
+            novel_content = novel_content.get_text(strip=True, separator='\n')
+            novel_content = novel_content.replace(
+                'AD4', '').replace('\\n', '\n').replace('\x1a', '')
+            return novel_content
+        elif "jjwxc.net" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            novel_content = novelSoup.find("div", {"class": "noveltext"})
+            # novel_content = novel_content.find_all("font")
+            novel_content = novel_content.get_text(strip=True, separator='\n')
+            novel_content = novel_content.replace(
+                'AD4', '').replace('\\n', '\n').replace('\x1a', '').replace("�", "")
+            return novel_content
+        elif "shubaow.net" in config.url:
+            novel = requests.get(url, headers=user_agent)
+            novel.raise_for_status()
+            novel.encoding = "GBK"
+            novelSoup = bs(novel.text, "html.parser")
+            novel_content = novelSoup.find("div", {"id": "content"})
+            novel_content = novel_content.get_text(strip=True, separator='\n')
+            novel_content = novel_content.replace(
+                'AD4', '').replace('\\n', '\n').replace('\x1a', '')
+            return novel_content
+    except Exception as e:
+        print(e)

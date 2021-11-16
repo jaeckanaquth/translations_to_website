@@ -39,7 +39,7 @@ def posting(heading, content):
     post.content = content
     post.id = client.call(posts.NewPost(post))
     post.date = datetime.now() + timedelta(days = 7)
-    post.post_status = 'publish'
+    post.post_status = 'draft'
     client.call(posts.EditPost(post.id, post))
     print(post)
     return post.id
