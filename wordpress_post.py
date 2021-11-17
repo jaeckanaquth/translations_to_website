@@ -12,6 +12,7 @@ from wordpress_xmlrpc import WordPressPost
 client = Client(config.my_site, config.user, config.password)
 # print(posting.split(","))
 
+
 def posting_test(heading, df):
     posting = client.call(posts.GetPosts())
     posting = [str(i) for i in posting]
@@ -26,7 +27,8 @@ def posting_test(heading, df):
         return "Already posted"
     else:
         return "Need to be posted"
-        
+
+
 def posting(heading, content):
     print(heading)
     # heading = 'test'
@@ -43,7 +45,7 @@ def posting(heading, content):
     client.call(posts.EditPost(post.id, post))
     print(post)
     return post.id
-        
+
 
 def uploadImage(novel_img, img_data):
     data = {
