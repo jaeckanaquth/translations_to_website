@@ -1,11 +1,9 @@
 import glob
-import requests
 if glob.glob("config.py"):
     import config
 else:
     import github_config as config
 import gspread_dataframe as gd
-from bs4 import BeautifulSoup as bs
 import novel_scrap
 from deep_translator import GoogleTranslator
 from wordpress_post import posting, posting_test
@@ -31,6 +29,7 @@ def page_translate(url):
                 pass
     return text
 
+
 def header_name(url):
     heading = novel_scrap.header_scrap(url)
     header = ''
@@ -42,7 +41,6 @@ def header_name(url):
             else:
                 header = header + " " + translated
             if header[-1] == ")":
-                
                 header = header.split(" ")
                 heading = ''
                 for i in header:
@@ -60,14 +58,13 @@ def header_name(url):
 def page_publishandlink(df, worksheet):
     page_lst = novel_scrap.page_scrap()
     for url in sorted(page_lst):
-        
         try:
             heading = header_name(url)
             print(heading)
             test = posting_test(heading, df)
             print(test)
             if test == "Need to be posted":
-                content = page_translate(url)                    
+                content = page_translate(url)
                 # whoops, I forgot to publish it!
                 publish_id = posting(heading, content)
                 #also need to put it on NU

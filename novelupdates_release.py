@@ -2,10 +2,11 @@ from selenium import webdriver
 import glob
 from time import sleep
 if glob.glob("config.py"):
-    from config import nu_username, nu_password, translator
+    from config import nu_username, nu_password
     import nu_config
 else:
-    from github_config import nu_username, nu_password, novel_name, translator
+    from github_config import nu_username, nu_password
+
 
 def page_linktonu(release_link_url, header):
     url = "https://www.novelupdates.com/add-release/"

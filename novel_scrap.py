@@ -96,7 +96,8 @@ def page_scrap():
             try:
                 url = dd.find('a')['href']
                 page_lst.append(url)
-            except:
+            except Exception as e:
+                print(e)
                 pass
         # print(page_lst)
         return page_lst
@@ -152,6 +153,8 @@ def header_scrap(url):
             return heading
     except Exception as e:
         print(e)
+
+
 def text_scrap(url):
     try:
         if "www.mbtxt.la" in config.url:

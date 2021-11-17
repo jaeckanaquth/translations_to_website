@@ -33,12 +33,13 @@ try:
 
 except Exception as e:
     worksheet = sh.add_worksheet(title=name_edit, rows="100", cols="4")
-    published = pd.DataFrame(columns = ["name", "post_id", "link_id", "wp_link"])
-    
+    published = pd.DataFrame(columns=["name", "post_id", "link_id", "wp_link"])
+
 
 try:
     published["name"].to_list()
-except:
+except Exception as e:
+    print(e)
     published["name"] = "test"
     published["post_id"] = "test"
     published["link_id"] = "test"
@@ -52,10 +53,9 @@ if filename not in published["name"].to_list():
     dct = {"name": filename, "post_id": img_id, "link_id": novel_img, "wp_link": ""}
     published = published.append(dct, ignore_index=True)
     gd.set_with_dataframe(worksheet, published)
-    
     print(published)
-        
+
+
 #save novel chapters
 # published = updates(published, worksheet)
 page_publishandlink(published, worksheet)
-

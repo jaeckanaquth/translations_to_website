@@ -1,4 +1,3 @@
-import github_config as config
 import urllib.request
 
 url = 'https://www.52shuku.vip/chongsheng/15386.html'

@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import glob
-if glob.glob("config.py"):  
+if glob.glob("config.py"):
     import config
 else:
     import github_config as config
@@ -40,7 +40,7 @@ def posting(heading, content):
     }
     post.content = content
     post.id = client.call(posts.NewPost(post))
-    post.date = datetime.now() + timedelta(days = 7)
+    post.date = datetime.now() + timedelta(days=7)
     post.post_status = 'publish'
     client.call(posts.EditPost(post.id, post))
     print(post)
