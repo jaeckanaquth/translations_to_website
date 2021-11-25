@@ -4,7 +4,6 @@ import gspread
 import novel_scrap
 import gspread_dataframe as gd
 import pandas as pd
-from bs4 import BeautifulSoup as bs
 if glob.glob("config.py"):
     from config import url, novel_name, novel_link, name_edit
 else:
@@ -22,7 +21,8 @@ gc = gspread.service_account(filename="service_account.json")
 
 try:
     sh = gc.open("QuthsTranslations")
-except:
+except Exception as e:
+    print(e)
     sh = gc.create("QuthsTranslations")
 
 filename = novel_name.replace(" ", "-") + ".jpg"
@@ -32,6 +32,7 @@ try:
     published = pd.DataFrame(worksheet.get_all_records())
 
 except Exception as e:
+    print(e)
     worksheet = sh.add_worksheet(title=name_edit, rows="100", cols="4")
     published = pd.DataFrame(columns=["name", "post_id", "link_id", "wp_link"])
 
