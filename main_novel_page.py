@@ -60,3 +60,5 @@ if filename not in published["name"].to_list():
 #save novel chapters
 # published = updates(published, worksheet)
 page_publishandlink(published, worksheet)
+
+# worksheet.clear()
