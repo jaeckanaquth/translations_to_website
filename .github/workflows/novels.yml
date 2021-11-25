@@ -1,9 +1,8 @@
 name: Novels
 
 on:
-  push:
-    schedule:
-      - cron: '0 2 * * FRI'
+  schedule:
+    - cron: '0 2 * * 5-7'
 jobs:
   I-Became-a-Heartthrob-After-A-Job-in-Quick-Transmigration:
     runs-on: ubuntu-latest
