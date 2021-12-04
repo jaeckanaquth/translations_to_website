@@ -6,3 +6,7 @@ geck*
 
 #vs things
 __pycache__
+
+#ignore files
+*.pickle
+*.docx

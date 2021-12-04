@@ -15,3 +15,5 @@ tags = [str(os.environ['TAG1'])]
 name_edit = novel_name.lower().replace(" ", '-')
 novel_link = f"{str(os.environ['NOVEL_LINK'])}{name_edit}/"
 service_account = str(os.environ['G_SECRETS'])
+g_folder = str(os.environ['FOLDER'])
+credentials = str(os.environ['CREDENTIALS'])

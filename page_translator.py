@@ -1,4 +1,6 @@
 import glob
+
+from novel_page_docx import page_docs
 if glob.glob("config.py"):
     import config
 else:
@@ -66,12 +68,16 @@ def page_publishandlink(df, worksheet):
             if test == "Need to be posted":
                 content = page_translate(url)
                 # whoops, I forgot to publish it!
-                publish_id = posting(heading, content)
+                # publish_id = posting(heading, content)
+                
+                #but need to send it too drive
+                sending_name = page_docs(heading, content)
+                
                 #also need to put it on NU
                 # print(page_linktonu(config.novel_link + publish_id, 'c' + str(df.shape[0] + 1)))
                 head = heading.replace(
                     "(", "").replace(")", "").replace(" ", "-") + "/"
-                dct = {"name": heading, "post_id": publish_id,
+                dct = {"name": heading, "post_id": sending_name,
                        "link_id": url, "wp_link": config.novel_link + head.lower()}
                 df = df.append(dct, ignore_index=True)
                 gd.set_with_dataframe(worksheet, df)
