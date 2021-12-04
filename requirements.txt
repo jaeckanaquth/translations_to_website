@@ -5,3 +5,4 @@ environs
 requests-toolbelt
 pygsheets
 gspread-dataframe
+python-docx
