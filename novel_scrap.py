@@ -30,7 +30,7 @@ def main_img():
         novel.encoding = "GBK"
         novelSoup = bs(novel.text, "html.parser")
         novel_img = novelSoup.find("img")
-        novel_img = "https:" + novel_img['src']
+        novel_img = novel_img['src']
         img_data = requests.get(novel_img).content
         return novel_img, img_data
     elif "jjwxc.net" in config.url:
