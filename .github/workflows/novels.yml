@@ -50,50 +50,50 @@ jobs:
       run: |
         python main_novel_page.py
 
-  # Being-an-Author-is-a-High-Risk-Occupation:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     max-parallel: 1
+  Being-an-Author-is-a-High-Risk-Occupation:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
 
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Set up Python 3.x
-  #     uses: actions/setup-python@v2
-  #     with:
-  #       python-version: '3.x'
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-  #   - name: Add conda to system path
-  #     run: |
-  #       # $CONDA is an environment variable pointing to the root of the miniconda directory
-  #       echo $CONDA/bin >> $GITHUB_PATH
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
 
-  #   - name: Install dependencies
-  #     run: |
-  #       conda env update --file environment.yml --name base
-  #       activate base
+    - name: Install dependencies
+      run: |
+        conda env update --file environment.yml --name base
+        activate base
 
-  #   - name: Install dependencies 2
-  #     run: |
-  #       pip install -r requirements.txt
+    - name: Install dependencies 2
+      run: |
+        pip install -r requirements.txt
 
-  #   - name: Set Environments
-  #     env:
-  #       NU_USER: ${{ secrets.NU_USER }}
-  #       NU_PASSWORD: ${{ secrets.NU_PASSWORD }}
-  #       TRANSLATOR: ${{ secrets.TRANSLATOR }}
-  #       MY_SITE: ${{ secrets.MY_SITE }}
-  #       WP_USER: ${{ secrets.WP_USER }}
-  #       WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
-  #       NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
-  #       T_NOVEL: "https://www.yawen.cc/dushi/89378/"
-  #       NOVEL_NAME: "Being an Author is a High Risk Occupation"
-  #       T_SITE: "https://www.yawen.cc"
-  #       TAG1: "BAHRO"
-  #       G_SECRETS: ${{ secrets.G_SECRETS }}
-  #       FOLDER: "1yENac-9jySUoFJzLP6W3wc0-31UJDALl"
-  #       CREDENTIALS: ${{ secrets.CREDENTIALS }}
-  #     run: |
-  #       python main_novel_page.py
+    - name: Set Environments
+      env:
+        NU_USER: ${{ secrets.NU_USER }}
+        NU_PASSWORD: ${{ secrets.NU_PASSWORD }}
+        TRANSLATOR: ${{ secrets.TRANSLATOR }}
+        MY_SITE: ${{ secrets.MY_SITE }}
+        WP_USER: ${{ secrets.WP_USER }}
+        WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+        NOVEL_LINK: ${{ secrets.NOVEL_LINK }}
+        T_NOVEL: "https://www.yawen.cc/dushi/89378/"
+        NOVEL_NAME: "Being an Author is a High Risk Occupation"
+        T_SITE: "https://www.yawen.cc"
+        TAG1: "BAHRO"
+        G_SECRETS: ${{ secrets.G_SECRETS }}
+        FOLDER: "1Urlz2xhSL2SmwQAb5DizUjmD2okkihpT"
+        CREDENTIALS: ${{ secrets.CREDENTIALS }}
+      run: |
+        python main_novel_page.py
 
   # Im-Just-This-Sue:
   #   runs-on: ubuntu-latest
