@@ -10,5 +10,4 @@ dependencies:
   - lxml
   - pillow
   - pandas
-  - google-api-python-client google-auth-httplib2 google-auth-oauthlib
 prefix: C:\Users\jaeck\anaconda3\envs\novels
