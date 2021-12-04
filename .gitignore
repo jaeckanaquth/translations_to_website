@@ -8,5 +8,5 @@ geck*
 __pycache__
 
 #ignore files
-*.pickle
+# *.pickle
 *.docx

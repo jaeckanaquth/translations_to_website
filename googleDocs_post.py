@@ -47,7 +47,7 @@ def get_gdrive_service():
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
     # return Google Drive API service
-    return build('drive', 'v3', credentials=creds)
+    return build('drive', 'v3', developerKey=creds)
 
 def upload_files(file):
     service = get_gdrive_service()
