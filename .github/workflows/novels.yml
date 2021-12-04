@@ -90,6 +90,8 @@ jobs:
   #       T_SITE: "https://www.yawen.cc"
   #       TAG1: "BAHRO"
   #       G_SECRETS: ${{ secrets.G_SECRETS }}
+  #       FOLDER: "1yENac-9jySUoFJzLP6W3wc0-31UJDALl"
+  #       CREDENTIALS: ${{ secrets.CREDENTIALS }}
   #     run: |
   #       python main_novel_page.py
 

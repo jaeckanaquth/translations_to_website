@@ -49,9 +49,10 @@ def get_gdrive_service():
     # return Google Drive API service
     return build('drive', 'v3', credentials=creds)
 
-def upload_files(file):
+def upload_files(docs_folder, file):
     service = get_gdrive_service()
     folder_id = config.g_folder
+    filing = docs_folder + '/' + file
     print("Folder ID:", folder_id)
     # upload a file text file
     # first, define file metadata, such as the name and the parent folder ID
@@ -60,6 +61,6 @@ def upload_files(file):
         "parents": [folder_id]
     }
     # upload
-    media = MediaFileUpload(file, resumable=True)
+    media = MediaFileUpload(filing, resumable=True)
     file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
     print("File created, id:", file.get("id"))
