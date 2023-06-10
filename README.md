@@ -85,8 +85,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you have any questions or suggestions regarding the Translations to WordPress project, please feel free to contact the project maintainer:
 
-- GitHub: [@jaeckanaquth](https://github
-
-.com/jaeckanaquth)
+- GitHub: [@jaeckanaquth](https://github.com/jaeckanaquth)
 
 We appreciate your contributions and hope this project benefits the translation and WordPress communities. Thank you for your support!
