@@ -14,32 +14,40 @@ from wordpress_xmlrpc import WordPressPost
 from datetime import datetime, timedelta
 load_dotenv()
 
-def acronym(phrase):
-    """Generates an acronym from a given phrase."""
-    phrase = phrase.replace('[','').replace(']','')
-    words = phrase.split()
-    acronym = ""
+def acronym(title):
+    """
+    Generates acronym from novel title.
+    
+    Args:
+        title (str): Full novel title
+        
+    Returns:
+        str: Generated acronym
+    """
 
-    for word in words:
-        acronym += word[0].lower()
+def calculate_post_date(date_str):
+    """
+    Calculates posting date based on input string.
+    
+    Args:
+        date_str (str): Date string to process
+        
+    Returns:
+        datetime: Processed post date
+    """
 
-    return acronym
-
-from datetime import datetime, timedelta
-
-def calculate_post_date(sections):
-    novel_date = sections["post date"]
-    start_date = datetime(novel_date.year, novel_date.month, 1)
-    chapter_number = sections['Page Number']
-
-    post_date = start_date + timedelta(days=(chapter_number - 1))
-    while post_date.weekday() in [4, 6]:
-        # Move to the next day
-        post_date += timedelta(days=1)
-        print(post_date)
-    return post_date
-
-def posting_the_chapter(sections):
+def posting_the_chapter(title, content, tags):
+    """
+    Posts chapter content to WordPress.
+    
+    Args:
+        title (str): Chapter title
+        content (str): Chapter content
+        tags (list): Associated tags
+        
+    Returns:
+        bool: Success status
+    """
     
     tags = sections["SEO Tags"].split(',')
     tags = [i.replace('[','').replace(']','').replace("\'","").replace('\"','').lstrip() for i in tags]

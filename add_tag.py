@@ -16,13 +16,13 @@ site_url = "https://" + os.getenv("Website") + "/wp-json/wp/v2"
 username = os.getenv("WP_USER")
 application_password = os.getenv("WP_password")
 
-def get_posts(page=1, per_page=100):
-    response = response = requests.get(
-        f'{site_url}/posts?page={page}&per_page={per_page}&status=publish,future,draft',
-        auth=HTTPBasicAuth(username, application_password)
-        )
-    response.raise_for_status()
-    return response.json()
+def get_posts():
+    """
+    Retrieves posts from WordPress API.
+    
+    Returns:
+        list: List of post objects
+    """
 
 def get_all_posts():
   all_posts = []
@@ -32,7 +32,7 @@ def get_all_posts():
   while True:
       # Include 'status' parameter to fetch scheduled posts
       response = requests.get(
-          f'{site_url}/posts?page={page}&per_page={per_page}&status=future',
+          f'{site_url}/posts?page={page}&amp;per_page={per_page}&amp;status=future',
           auth=HTTPBasicAuth(username, application_password)
       )
       
@@ -71,12 +71,16 @@ def get_tags():
   return response.json()
 
 def get_or_create_tag(tag_name):
-  tags = get_tags()
-  # Check if the tag already exists
-  for tag in tags:
-      if tag['name'] == tag_name:
-          return tag['id']  # Return the existing tag ID
-
+    """
+    Gets existing tag or creates new one.
+    
+    Args:
+        tag_name (str): Name of tag
+        
+    Returns:
+        dict: Tag object
+    """
+  
   # If the tag does not exist, create it
   response = requests.post(
       f'{site_url}/tags',

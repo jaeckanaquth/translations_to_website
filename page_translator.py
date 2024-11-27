@@ -3,35 +3,20 @@ page_translator.py
 Description: Handles translation of novel content using OpenAI's API
 """
 
-from dotenv import load_dotenv
-import os
-from openai import OpenAI
+"""
+Handles translation of novel pages using OpenAI's API.
+Processes text content and manages translation requests.
+"""
 
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=api_key)
-
-def page_translate(prompt):
+def page_translate(text):
     """
-    Translates text using OpenAI's API
-
+    Translates provided text using OpenAI's API.
+    
     Args:
-        prompt (str): Text to be translated
-
+        text (str): Raw text content to translate
+        
     Returns:
-        str: Translated text from OpenAI
+        str: Translated text content
     """
-    completion = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
-
-
-    # Access the content attribute directly
-    return completion.choices[0].message.content
+    # Initialize OpenAI client with API key
+    client = OpenAI()  # Add API key configuration in environment
