@@ -1,88 +1,63 @@
-# Translations to Website
+# Novel Translation and Publishing System
 
-This project automates the process of translating Chinese novels from various Chinese websites into English and posting them to a WordPress site. It also tracks the number of translated pages and updates an Excel file on Google Drive. This project aims to simplify the translation workflow and facilitate the management of translated content.
+A web application that automates novel translations and publishing to WordPress using OpenAI integration.
 
-## Table of Contents
+## Core Components
 
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- `page_translator.py`: Handles translation using OpenAI's API
+- `posting.py`: Manages WordPress post creation and updates
+- `main.py`: Core application logic and workflow orchestration
+- `get_the_novel.py`: Novel content retrieval
+- `novel_update.py`: Handles novel update processing
+- `add_tag.py`: Manages SEO tags
 
-## Introduction
+## Features
 
-The Translations to Website project automates the translation process for Chinese novels and provides a seamless workflow for translating and publishing them on a WordPress site. By leveraging the power of Python and various libraries, this project helps streamline the translation and publishing tasks, while also maintaining a record of the translated pages in an Excel file.
+- Novel translation automation
+- WordPress integration for content publishing
+- Custom RSS feeds via `custom-feed.php`
+- SEO tag management
+- Chapter navigation system
+- Scheduled posting capability
 
-## Getting Started
+## Directory Structure
 
-### Prerequisites
+```
+├── main.py                 # Main application entry point
+├── page_translator.py      # Translation handling
+├── posting.py             # WordPress posting logic
+├── get_the_novel.py      # Novel retrieval
+├── novel_update.py       # Update processing
+├── add_tag.py           # Tag management
+├── site_setup.md         # Site configuration
+├── style.css             # Main stylesheet
+├── custom-feed.php       # Custom RSS feed
+└── old_code/            # Legacy code directory
+```
 
-To use and contribute to the Translations to Website project, you will need the following:
+## Environment Setup
 
-- Python installed on your machine
-- Knowledge of Python programming language
-- Familiarity with web scraping techniques
-- Access to a WordPress site and its credentials
-- A Google account for accessing Google Drive
+Required environment variables:
+- `OPENAI_API_KEY`: For translation services
+- `WP_USER`: WordPress username
+- `WP_PASSWORD`: WordPress application password
+- `Website`: Website domain
 
-### Installation
+## Setup Instructions
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/jaeckanaquth/translations_to_website.git
-   ```
-2. Navigate to the project directory:
-   ```
-   cd translations_to_website
-   ```
-3. Install the required Python packages:
-   ```
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-The main file for this project is `main_novel_page.py`. Here are the general steps to use the project:
-
-1. Configure the project by providing your WordPress site credentials and Google Drive API credentials.
-2. Implement the web scraping logic to extract the novel content from Chinese websites.
-3. Implement the translation logic to translate the extracted content from Chinese to English.
-4. Use the WordPress REST API to post the translated content to your WordPress site.
-5. Implement the logic to update the Excel file on Google Drive with the count of translated pages.
-6. Customize and modify the project according to your specific needs and requirements.
+1. Clone the repository
+2. Install dependencies: `pip install -r requirements.txt`
+3. Set up environment variables in `.env` file
+4. Configure WordPress settings per `site_setup.md`
+5. Run the application: `python main.py`
 
 ## Contributing
 
-Contributions to the Translations to Website project are welcome and encouraged. If you have ideas, bug fixes, or enhancements, you can contribute by following these steps:
-
-1. Fork the repository to your GitHub account.
-2. Create a new branch for your changes:
-   ```
-   git checkout -b my-feature
-   ```
-3. Make your desired changes and improvements to the codebase.
-4. Commit your changes with descriptive commit messages:
-   ```
-   git commit -m "Add my feature"
-   ```
-5. Push your branch to your forked repository:
-   ```
-   git push origin my-feature
-   ```
-6. Create a pull request from your branch to the original repository.
+1. Fork the repository
+2. Create a feature branch
+3. Submit pull requests with detailed descriptions
+4. Follow the existing code style
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-## Contact
-
-If you have any questions or suggestions regarding the Translations to Website project, please feel free to contact the project maintainer:
-
-- GitHub: [@jaeckanaquth](https://github.com/jaeckanaquth)
-
-We appreciate your contributions and hope this project benefits the translation and WordPress communities. Thank you for your support!
+This project is under MIT license - see LICENSE file for details.

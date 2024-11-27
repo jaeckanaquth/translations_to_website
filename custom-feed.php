@@ -1,9 +1,6 @@
 <?php
 /**
- * Custom RSS Feed Template
- * 
- * Generates custom RSS feed for translated novel chapters.
- * Includes chapter titles, content and associated metadata.
+ * Template Name: Custom RSS Feed
  */
 
 // Disable caching

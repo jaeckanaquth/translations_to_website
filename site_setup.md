@@ -1,37 +1,25 @@
-# Site Configuration
+translations.techtaleworld.com
+  - Home: Overview and introduction to the site
 
-## Domains and Subdomains
-- Main site: translations.techtaleworld.com
-- Development: dev.translations.techtaleworld.com
-- Staging: staging.translations.techtaleworld.com
+resume.translations.techtaleworld.com
+  - Resume: Detailed resume page
 
-## Site Structure
-- Home (translations.techtaleworld.com)
-  - Overview and introduction
-  - Latest translations
-  - Featured content
+projects.translations.techtaleworld.com
+  - Projects: Portfolio of your projects with descriptions and links
 
-- Novel Translations (translations.translations.techtaleworld.com)
-  - Original text alongside translations
-  - Language options
-  - Downloadable formats
+blog.translations.techtaleworld.com
+  - Blog: Technical articles on DevOps, Data Science, etc.
+    - Categories: DevOps, Data Science, Machine Learning, Cloud Computing
+    - Tags: Specific topics within each category
 
-- Blog (blog.translations.techtaleworld.com)
-  - Technical articles
-  - Translation insights
-  - Site updates
+reviews.translations.techtaleworld.com
+  - Book Reviews: Reviews categorized by genre, author, or rating
+    - Categories: Fiction, Non-fiction, Sci-Fi, Fantasy, etc.
 
-- Reviews (reviews.translations.techtaleworld.com)
-  - Novel reviews
-  - Translation quality analysis
-  - Reader feedback
+translations.translations.techtaleworld.com
+  - Novel Translations: Original text alongside translations
+    - Language Options: Switch between languages
+    - Downloadable Content: PDFs or other formats
 
-- Contact (contact.translations.techtaleworld.com)
-  - Contact form
-  - Social media links
-  - Support options
-
-## Development Guidelines
-- Use staging for testing
-- Follow WordPress coding standards
-- Document all customizations
+contact.translations.techtaleworld.com
+  - Contact: Form to get in touch, social media links
