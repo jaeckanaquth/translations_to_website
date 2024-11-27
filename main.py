@@ -1,6 +1,10 @@
+"""
+Main module orchestrating the novel translation and posting workflow.
+Coordinates the translation and posting process.
+"""
+
 import json
 import pprint
-
 import pandas as pd
 from get_the_novel import get_the_novel_pages, get_novel_page
 from page_translator import page_translate

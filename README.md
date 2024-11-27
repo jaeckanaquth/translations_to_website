@@ -1,6 +1,13 @@
-# Novel Translation and Publishing System
+# Core Functionality
+This repository contains scripts for automating novel translations and website posting.
 
-A web application that automates novel translations and publishing to WordPress using OpenAI integration.
+## Main Components:
+- `page_translator.py`: Handles translation of novel pages
+- `posting.py`: Manages post scheduling and formatting
+- `get_the_novel.py`: Scrapes novel content from source
+- `main.py`: Orchestrates the translation and posting workflow
+
+The repository is designed to automate the process of translating novels and posting them to a website.
 
 ## Core Components
 

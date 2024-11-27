@@ -1,3 +1,8 @@
+"""
+Module for managing post scheduling and formatting.
+Handles post date calculations and content formatting.
+"""
+
 import requests
 from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv

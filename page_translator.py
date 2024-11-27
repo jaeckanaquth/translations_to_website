@@ -1,3 +1,8 @@
+"""
+Module for translating novel pages using translation services.
+Handles the core translation functionality for novel content.
+"""
+
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
