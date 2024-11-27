@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel Categories</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f5ff;
+            padding: 2rem;
+        }
+
+        .categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories-title {
+            text-align: center;
+            color: #4a2b7a;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .categories-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #8a4fff;
+            margin: 10px auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(138, 79, 255, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e6e0ff;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(138, 79, 255, 0.2);
+            border-color: #8a4fff;
+            background: linear-gradient(to bottom right, #ffffff, #fbf9ff);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            color: #8a4fff;
+            margin-bottom: 1rem;
+        }
+
+        .category-name {
+            font-size: 1.4rem;
+            color: #4a2b7a;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+
+        .category-count {
+            display: inline-block;
+            background: #f0e6ff;
+            color: #8a4fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .category-card:hover .category-count {
+            background: #8a4fff;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-name {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="categories-container">
+        <h1 class="categories-title">Novel Series</h1>
+        <div class="categories-grid">
+            <!-- Category 1 -->
+            <a href="https://translations.techtaleworld.com/novel-title-pages/how-a-sickly-beauty-clears-infinite-variety-shows/" class="category-card">
+                <i class="fas fa-book-open category-icon"></i>
+                <h2 class="category-name">How a Sickly Beauty Clears Infinite Variety Shows</h2>
+                <span class="category-count">Read Series →</span>
+            </a>
+
+            <!-- Category 2 -->
+            <a href="https://translations.techtaleworld.com/novel-title-pages/the-foolish-beauty-is-pampered-in-a-horror-game/" class="category-card">
+                <i class="fas fa-ghost category-icon"></i>
+                <h2 class="category-name">The Foolish Beauty is Pampered in a Horror Game</h2>
+                <span class="category-count">Read Series →</span>
+            </a>
+
+            <!-- Category 3 -->
+            <a href="https://translations.techtaleworld.com/novel-title-pages/the-scumbag-transformation-strategy/" class="category-card">
+                <i class="fas fa-mask category-icon"></i>
+                <h2 class="category-name">The Scumbag Transformation Strategy</h2>
+                <span class="category-count">Read Series →</span>
+            </a>
+
+            <!-- Category 4 -->
+            <a href="https://translations.techtaleworld.com/novel-title-pages/delicate-sweet-attack-always-targeted-by-the-villain/" class="category-card">
+                <i class="fas fa-heart category-icon"></i>
+                <h2 class="category-name">Delicate Sweet Attack Always Targeted by the Villain</h2>
+                <span class="category-count">Read Series →</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
