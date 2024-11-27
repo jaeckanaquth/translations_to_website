@@ -1,63 +1,89 @@
 # Novel Translation and Publishing System
 
-A web application that automates novel translations and publishing to WordPress using OpenAI integration.
-
-## Core Components
-
-- `page_translator.py`: Handles translation using OpenAI's API
-- `posting.py`: Manages WordPress post creation and updates
-- `main.py`: Core application logic and workflow orchestration
-- `get_the_novel.py`: Novel content retrieval
-- `novel_update.py`: Handles novel update processing
-- `add_tag.py`: Manages SEO tags
+A comprehensive system for translating novels from Chinese to English and publishing them on WordPress. The system automates translation, content management, SEO optimization, and publishing workflows.
 
 ## Features
 
-- Novel translation automation
-- WordPress integration for content publishing
-- Custom RSS feeds via `custom-feed.php`
+- Automated novel content extraction from source websites
+- AI-powered translation using OpenAI's API
+- WordPress integration for automated publishing
+- SEO tag generation and management
+- Custom RSS feed generation
+- Chapter tracking and scheduling
+- Google Drive integration for backup
+
+## Components
+
+The system consists of several key components:
+
+### Content Extraction
+- Novel content scraping from source sites
+- Chapter metadata extraction
+- Content cleaning and preprocessing
+
+### Translation
+- OpenAI API integration for translation
+- Content chunking and batch processing
+- Translation quality checks
+
+### Publishing
+- WordPress post creation and scheduling
 - SEO tag management
-- Chapter navigation system
-- Scheduled posting capability
+- Custom RSS feed generation
+- Chapter linking and navigation
 
-## Directory Structure
+### Management
+- Translation progress tracking
+- Chapter scheduling
+- Update notifications
+- Google Drive backup
 
-```
-├── main.py                 # Main application entry point
-├── page_translator.py      # Translation handling
-├── posting.py             # WordPress posting logic
-├── get_the_novel.py      # Novel retrieval
-├── novel_update.py       # Update processing
-├── add_tag.py           # Tag management
-├── site_setup.md         # Site configuration
-├── style.css             # Main stylesheet
-├── custom-feed.php       # Custom RSS feed
-└── old_code/            # Legacy code directory
+## Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/jaeckanaquth/translations_to_website.git
 ```
 
-## Environment Setup
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-Required environment variables:
-- `OPENAI_API_KEY`: For translation services
-- `WP_USER`: WordPress username
-- `WP_PASSWORD`: WordPress application password
-- `Website`: Website domain
+3. Configure environment variables:
+```
+OPENAI_API_KEY=your_api_key
+WP_USER=wordpress_username
+WP_PASSWORD=wordpress_password
+Website=your_domain.com
+```
 
-## Setup Instructions
+4. Run the main application:
+```bash
+python main.py
+```
 
-1. Clone the repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Set up environment variables in `.env` file
-4. Configure WordPress settings per `site_setup.md`
-5. Run the application: `python main.py`
+## Architecture
+
+The system follows a modular architecture with clear separation of concerns:
+
+- `main.py`: Application entry point and workflow orchestration
+- `get_the_novel.py`: Novel content extraction
+- `page_translator.py`: Translation processing
+- `posting.py`: WordPress integration
+- `novel_update.py`: Update management
+- `add_tag.py`: SEO tag management
+- `custom-feed.php`: RSS feed generation
+- `functions.php`: WordPress customizations
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Submit pull requests with detailed descriptions
-4. Follow the existing code style
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on submitting pull requests.
 
 ## License
 
-This project is under MIT license - see LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support, please open an issue in the GitHub repository or contact the maintainers directly.

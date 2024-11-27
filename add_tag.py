@@ -1,3 +1,8 @@
+"""
+Manages SEO tag generation and application.
+Processes novel metadata to create appropriate tags.
+"""
+
 import os
 from time import sleep
 from dotenv import load_dotenv

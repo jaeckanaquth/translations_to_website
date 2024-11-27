@@ -1,3 +1,8 @@
+"""
+Manages WordPress post creation and updates.
+Handles formatting, SEO tags, and publishing of translated content.
+"""
+
 import requests
 from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv

@@ -1,3 +1,8 @@
+"""
+Handles novel update checks and notifications.
+Manages chapter tracking and update scheduling.
+"""
+
 import json
 import pandas as pd
 import requests
