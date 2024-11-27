@@ -1,9 +1,14 @@
+"""
+add_tag.py
+Description: Manages SEO tag generation and management
+"""
+
 import os
 from time import sleep
 from dotenv import load_dotenv
 import requests
 from requests.auth import HTTPBasicAuth
-from posting import acronym  # Assuming this is a custom function you have
+from posting import acronym
 load_dotenv()
 
 # Configuration

@@ -1,6 +1,10 @@
+"""
+main.py
+Description: Core application logic and workflow orchestration
+"""
+
 import json
 import pprint
-
 import pandas as pd
 from get_the_novel import get_the_novel_pages, get_novel_page
 from page_translator import page_translate
