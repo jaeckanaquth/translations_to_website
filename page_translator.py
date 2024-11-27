@@ -1,3 +1,8 @@
+"""
+Handles translation of novel content using OpenAI's API.
+Processes text chunks and manages API interactions for translations.
+"""
+
 from dotenv import load_dotenv
 import os
 from openai import OpenAI

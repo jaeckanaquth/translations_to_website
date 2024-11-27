@@ -1,4 +1,7 @@
-#TODO: Get the novel from the website https://www.52shuku.vip and return it as a string
+"""
+Fetches novel content from source websites.
+Extracts chapter content and metadata for processing.
+"""
 
 import requests
 from bs4 import BeautifulSoup

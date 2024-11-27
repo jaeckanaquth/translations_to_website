@@ -1,5 +1,8 @@
 <?php
 /**
+ * Generates custom RSS feeds for translated novels.
+ * Handles feed formatting and content delivery.
+ *
  * Template Name: Custom RSS Feed
  */
 

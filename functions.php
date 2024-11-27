@@ -1,5 +1,8 @@
 <?php
 /**
+ * WordPress theme functions and customizations.
+ * Contains hooks and filters for novel publishing system.
+ *
  * ColorMag functions related to adding files.
  *
  * @link    https://developer.wordpress.org/themes/basics/theme-functions/

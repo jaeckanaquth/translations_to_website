@@ -1,5 +1,9 @@
+"""
+Main application entry point for the Novel Translation and Publishing System.
+Orchestrates the workflow between translation and publishing components.
+"""
+
 import json
-import pprint
 
 import pandas as pd
 from get_the_novel import get_the_novel_pages, get_novel_page
