@@ -1,63 +1,135 @@
-# Novel Translation and Publishing System
+# Translations Website
 
-A web application that automates novel translations and publishing to WordPress using OpenAI integration.
+A web application for translating and publishing novel chapters with automated workflows for content management and SEO optimization.
 
-## Core Components
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Setup Instructions](#setup-instructions)
+- [Code Structure](#code-structure)
+- [Usage](#usage)
+- [Contributing](#contributing)
 
-- `page_translator.py`: Handles translation using OpenAI's API
-- `posting.py`: Manages WordPress post creation and updates
-- `main.py`: Core application logic and workflow orchestration
-- `get_the_novel.py`: Novel content retrieval
-- `novel_update.py`: Handles novel update processing
-- `add_tag.py`: Manages SEO tags
+## Overview
+
+This repository contains code for a translations website that handles:
+- Novel chapter translations
+- WordPress content publishing
+- SEO optimization
+- RSS feed generation
+- Chapter navigation
+- Custom styling
 
 ## Features
 
-- Novel translation automation
-- WordPress integration for content publishing
-- Custom RSS feeds via `custom-feed.php`
-- SEO tag management
-- Chapter navigation system
-- Scheduled posting capability
+### Translation Management
+- Automated translation workflow using OpenAI API
+- Chapter content formatting and structuring
+- SEO tag generation and management
+- Meta title/description generation
 
-## Directory Structure
+### Content Publishing
+- WordPress integration for automated posting
+- Custom RSS feed generation
+- Chapter navigation with next/previous links
+- Category and tag management
 
-```
-├── main.py                 # Main application entry point
-├── page_translator.py      # Translation handling
-├── posting.py             # WordPress posting logic
-├── get_the_novel.py      # Novel retrieval
-├── novel_update.py       # Update processing
-├── add_tag.py           # Tag management
-├── site_setup.md         # Site configuration
-├── style.css             # Main stylesheet
-├── custom-feed.php       # Custom RSS feed
-└── old_code/            # Legacy code directory
-```
-
-## Environment Setup
-
-Required environment variables:
-- `OPENAI_API_KEY`: For translation services
-- `WP_USER`: WordPress username
-- `WP_PASSWORD`: WordPress application password
-- `Website`: Website domain
+### Frontend
+- Responsive chapter listing page
+- Custom styling for content presentation
+- Left sidebar navigation
+- Novel series grid layout
 
 ## Setup Instructions
 
-1. Clone the repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Set up environment variables in `.env` file
-4. Configure WordPress settings per `site_setup.md`
-5. Run the application: `python main.py`
+1. Clone the repository:
+```bash
+git clone https://github.com/username/translations_to_website.git
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Configure environment variables in `.env`:
+```
+OPENAI_API_KEY=your_api_key
+WP_USER=wordpress_username 
+WP_PASSWORD=wordpress_password
+Website=your_domain.com
+```
+
+4. Setup WordPress:
+- Install required plugins
+- Configure custom RSS feed template
+- Add custom functions to theme
+
+## Code Structure
+
+### Core Components
+
+#### Translation (`page_translator.py`)
+Handles translation using OpenAI API:
+```python
+def page_translate(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ]
+    )
+```
+
+#### Publishing (`posting.py`) 
+Manages WordPress content posting with:
+- Chapter formatting
+- Navigation links
+- Meta data
+- SEO tags
+
+#### Novel Updates (`novel_update.py`)
+Tracks translation progress and manages chapter data
+
+### Frontend Files
+
+#### Chapter Template (`get_chapter.html`)
+- Responsive chapter listing
+- Navigation controls
+- Custom styling
+
+#### Styling (`style.css`)
+Custom styles for:
+- Chapter cards
+- Navigation elements  
+- RSS feed formatting
+
+## Usage
+
+1. Add new novel:
+```python
+python main.py --novel "Novel Name" --url "source_url"
+```
+
+2. Generate chapters:
+```python
+python get_the_novel.py --novel "Novel Name"
+```
+
+3. Publish content:
+```python
+python posting.py --novel "Novel Name"
+```
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Submit pull requests with detailed descriptions
-4. Follow the existing code style
+2. Create feature branch (`git checkout -b feature/name`)
+3. Commit changes (`git commit -am 'Add feature'`) 
+4. Push branch (`git push origin feature/name`)
+5. Create Pull Request
 
 ## License
 
-This project is under MIT license - see LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
