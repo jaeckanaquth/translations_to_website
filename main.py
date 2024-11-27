@@ -1,10 +1,15 @@
 """
-main.py
-Description: Core application logic and workflow orchestration
+Main entry point for novel translation and posting system.
+Handles initialization, chapter processing and orchestration.
 """
 
-import json
-import pprint
+# Environment Variables:
+# WP_USER: WordPress username
+# WP_APP_PASSWORD: WordPress application password
+# NOVEL_URL: Source novel URL
+
+def initialize_app():
+    """Initialize application configuration and dependencies."""
 import pandas as pd
 from get_the_novel import get_the_novel_pages, get_novel_page
 from page_translator import page_translate
@@ -41,7 +46,7 @@ def novel_translate_and_post(data):
                 Translate the following text to English and correct the grammar. After translating, format the text with the following structure:
 
                 1. **Novel Name**: {data["series_id"]}
-                2. **Chapter Name / Title**: Format as "Chapter {i-1}): <Chapter Name>" (if not found, make up according to content)
+                2. **Chapter Name / Title**: Format as "Chapter {i-1}): &lt;Chapter Name&gt;" (if not found, make up according to content)
                 3. **Meta Title**: Insert a suitable meta title for the chapter here.
                 4. **Meta Description**: Insert a suitable meta description for the chapter here.
                 5. **Synopsis**: Insert the summary / introduction / novel summary here (Only if available on the page otherwise mark it as N/A)
@@ -61,7 +66,7 @@ def novel_translate_and_post(data):
                 Translate the following text to English and correct the grammar. After translating, format the text with the following structure:
 
                 1. **Novel Name**: {data["series_id"]}
-                2. **Chapter Name / Title**: Format as "Chapter {i-1}: <Chapter Name>" (if not found, make up according to content)
+                2. **Chapter Name / Title**: Format as "Chapter {i-1}: &lt;Chapter Name&gt;" (if not found, make up according to content)
                 3. **Meta Title**: Insert a suitable meta title for the chapter here.
                 4. **Meta Description**: Insert a suitable meta description for the chapter here.
                 5. **Content**: Insert the chapter content Here (keep it as paragraphs. Start with a newline.)

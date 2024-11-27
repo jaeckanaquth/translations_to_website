@@ -1,22 +1,20 @@
 """
-page_translator.py
-Description: Handles translation of novel content using OpenAI's API
+Handles text translation functionality using external translation API.
+Includes text preprocessing and chunking for optimal translation.
 """
 
-"""
-Handles translation of novel pages using OpenAI's API.
-Processes text content and manages translation requests.
-"""
+MAX_CHUNK_SIZE = 5000  # Maximum characters per translation request
+OVERLAP_SIZE = 100     # Overlap between chunks to maintain context
 
 def page_translate(text):
     """
-    Translates provided text using OpenAI's API.
+    Translate provided text while maintaining formatting.
     
     Args:
-        text (str): Raw text content to translate
+        text (str): Raw text to translate
         
     Returns:
-        str: Translated text content
+        str: Translated text
     """
     # Initialize OpenAI client with API key
     client = OpenAI()  # Add API key configuration in environment

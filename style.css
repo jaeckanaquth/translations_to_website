@@ -1,8 +1,19 @@
-.rss-excerpt {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 10px;
+/*
+Theme Name: Novel Translations
+Version: 1.0
+Description: Custom theme for novel translations
+*/
+
+/* Variables */
+:root {
+    --primary-color: #333;
 }
+
+/* Layout Components */
+
+/* Navigation */
+
+/* Responsive Design */
 
 .rss-content {
     font-size: 16px;
