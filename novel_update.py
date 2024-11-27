@@ -1,3 +1,8 @@
+"""
+novel_update.py
+Description: Manages novel updates and version control
+"""
+
 import json
 import pandas as pd
 import requests

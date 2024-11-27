@@ -1,4 +1,7 @@
-#TODO: Get the novel from the website https://www.52shuku.vip and return it as a string
+"""
+get_the_novel.py
+Description: Handles novel content scraping and initial processing
+"""
 
 import requests
 from bs4 import BeautifulSoup
